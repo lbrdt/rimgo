@@ -1,0 +1,71 @@
+mixin commentbox(comment)
+  div(class='GalleryComment')
+    div(class='GalleryComment-wrapper')
+      div(class='GalleryComment-content')
+        div(class='GalleryComment-byLine')
+          div(class='Meta')
+            div(class='GalleryComment-avatar-bar')
+              div(class='avatar')
+                a(title='View profile of '+comment.account.username, href='/user/'+comment.account.username)
+                  span(title=comment.account.username, style='background-image: url("' + util.proxyURL(comment.account.avatar) + '");')
+            a(class='author-name', title='View profile of '+comment.account.username, href='/user/'+comment.account.username) #{comment.account.username}
+            span(class="date", title=comment.created_at)
+              span(class="delimiter") •
+              span #{comment.created_at} via <a class="platform bold" href="/apps">#{comment.platform}</a>
+        div(class='GalleryComment-body')
+          span(class='Linkify')
+            | !{util.linkify(comment.comment)}
+        div(class='GalleryComment-actions')
+          div(class='vote-btn upvote actions-btn' title='Upvotes')
+            div(class='Vote Vote-up')
+              svg(width='16', height='16', viewBox='0 0 16 16', fill='none', xmlns='http://www.w3.org/2000/svg')
+                title Upvotes
+                | <path fill="none" stroke="#B4B9C2" stroke-width="2" fill-rule="evenodd" clip-rule="evenodd" d="M7.197 2.524a1.2 1.2 0 011.606 0c.521.46 1.302 1.182 2.363 2.243a29.617 29.617 0 012.423 2.722c.339.435.025 1.028-.526 1.028h-2.397v4.147c0 .524-.306.982-.823 1.064-.417.066-1.014.122-1.843.122s-1.427-.056-1.843-.122c-.517-.082-.824-.54-.824-1.064V8.517H2.937c-.552 0-.865-.593-.527-1.028.52-.669 1.32-1.62 2.423-2.722a52.996 52.996 0 012.364-2.243z"></path>
+          .points + #{comment.upvote_count}
+          div(class='vote-btn down actions-btn' title='Downvotes')
+            div(class='Vote Vote-down')
+              svg(width='16', height='16', viewBox='0 0 16 16', fill='none', xmlns='http://www.w3.org/2000/svg')
+                title Downvotes
+                | <path fill="none" stroke="#B4B9C2" stroke-width="2" fill-rule="evenodd" clip-rule="evenodd" d="M8.803 13.476a1.2 1.2 0 01-1.606 0 53.03 53.03 0 01-2.364-2.243 29.613 29.613 0 01-2.422-2.722c-.339-.435-.025-1.028.526-1.028h2.397V3.336c0-.524.306-.982.823-1.064A11.874 11.874 0 018 2.15c.829 0 1.427.056 1.843.122.517.082.824.54.824 1.064v4.147h2.396c.552 0 .865.593.527 1.028-.52.669-1.32 1.62-2.423 2.722a53.038 53.038 0 01-2.364 2.243z"></path>
+          .points - #{comment.downvote_count}
+          .points = #{comment.point_count}
+    div(class='GalleryComment-replies')
+      each reply in comment.comments
+        +commentbox(reply)
+html
+  head
+    title imgur-proxy
+    include includes/head.pug
+  body
+    div(class='Gallery-Content')
+      div(class='Gallery-Header')
+        div(class='Gallery-Title')
+          span #{title}
+        div(class='Gallery-Byline')
+          a(class='author-link' title='View profile of '+account.username, href='/user/'+account.username)
+            span(class='UserAvatar', title=account.username, style='background-image: url("' + util.proxyURL(account.avatar_url) + '");')
+          div(class='Info-Wrapper')
+            div(class='Info')
+              a(class='author-name' title='View profile of '+account.username, href='/user/'+account.username) #{account.username}
+            div(class='Meta')
+              span #{view_count} Views
+              span(class='delimiter') •
+              span(title=created_at) #{created_at}
+      div(class='Gallery-ContentWrapper')
+        div(class='Gallery-Content--media')
+          div(class='imageContainer')
+            img(src=util.proxyURL(cover.url))
+      div(class='Gallery-Content--tags')
+        each tag in tags
+          a(class='TagPill'
+            style='background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) repeat scroll 0% 0%, rgba(0, 0, 0, 0) url("/' + tag.background_id + '_d.jpg?maxwidth=200&fidelity=grand") repeat scroll 0% 0%;'
+            href='/t/'+tag.tag) #{tag.tag}
+    div(class='CommentsList')
+      div(class='CommentsList-headline')
+        div(class='CommentsList-headline--counter')
+          span #{comments.length} Comments
+      div
+        div(class='CommentsList-comments')
+          div(class='CommentsList-comments--container')
+            each comment in comments
+              +commentbox(comment)

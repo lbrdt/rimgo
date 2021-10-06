@@ -1,0 +1,37 @@
+{
+  "name": "imgur-proxy",
+  "version": "0.0.1",
+  "description": "",
+  "main": "dist/index.js",
+  "typings": "dist/index",
+  "scripts": {
+    "start": "node dist/index.js",
+    "build": "npx tsc",
+    "watch": "npx tsc --watch",
+    "test": "npx mocha -r ts-node/register test/**/*.test.ts",
+    "dev:tsc": "tsc --watch -p .",
+    "dev:serve": "nodemon -e js -w dist dist/index.js",
+    "dev": "run-p dev:*"
+  },
+  "author": "3np",
+  "license": "GPL-3.0-or-later",
+  "devDependencies": {
+    "@types/hapi__hapi": "^20.0.9",
+    "@types/hapi__inert": "^5.2.3",
+    "@types/hapi__vision": "^5.5.3",
+    "@types/node": "^16.10.3",
+    "@types/pug": "^2.0.5",
+    "nodemon": "^2.0.13",
+    "npm-run-all": "^4.1.5",
+    "typescript": "^4.4.3"
+  },
+  "dependencies": {
+    "@hapi/hapi": "^20.2.0",
+    "@hapi/inert": "^6.0.4",
+    "@hapi/vision": "^6.1.0",
+    "cheerio": "^1.0.0-rc.10",
+    "got": "^11.8.2",
+    "hpagent": "^0.1.2",
+    "pug": "^3.0.2"
+  }
+}

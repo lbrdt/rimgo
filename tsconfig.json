@@ -1,0 +1,17 @@
+{
+    "compilerOptions": {
+        "module": "commonjs",
+        "target": "es2019",
+        "noImplicitAny": true,
+        "strictNullChecks": true,
+        "declaration": true,
+        "sourceMap": false,
+        "outDir": "dist",
+        "typeRoots": [
+            "src/types/"
+        ]
+    },
+    "include": [
+        "src/**/*"
+    ]
+}
