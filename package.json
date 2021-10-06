@@ -14,7 +14,7 @@
     "dev": "run-p dev:*"
   },
   "author": "3np",
-  "license": "GPL-3.0-or-later",
+  "license": "AGPL-3.0",
   "devDependencies": {
     "@types/hapi__hapi": "^20.0.9",
     "@types/hapi__inert": "^5.2.3",
