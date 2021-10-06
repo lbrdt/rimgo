@@ -60,12 +60,13 @@ html
           a(class='TagPill'
             style='background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) repeat scroll 0% 0%, rgba(0, 0, 0, 0) url("/' + tag.background_id + '_d.jpg?maxwidth=200&fidelity=grand") repeat scroll 0% 0%;'
             href='/t/'+tag.tag) #{tag.tag}
-    div(class='CommentsList')
-      div(class='CommentsList-headline')
-        div(class='CommentsList-headline--counter')
-          span #{comments.length} Comments
-      div
-        div(class='CommentsList-comments')
-          div(class='CommentsList-comments--container')
-            each comment in comments
-              +commentbox(comment)
+    if comments != null
+      div(class='CommentsList')
+        div(class='CommentsList-headline')
+          div(class='CommentsList-headline--counter')
+            span #{comments.length} Comments
+        div
+          div(class='CommentsList-comments')
+            div(class='CommentsList-comments--container')
+              each comment in comments
+                +commentbox(comment)

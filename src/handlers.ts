@@ -3,6 +3,8 @@ import '@hapi/vision';
 import { fetchAlbumURL, fetchComments, fetchGallery, fetchMedia } from './fetchers';
 import * as util from './util';
 
+import CONFIG from './config';
+
 export const handleMedia = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
   const {
     baseName,
@@ -36,7 +38,9 @@ export const handleTag = (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
 export const handleGallery = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
   const galleryID = request.params.galleryID;
   const gallery = await fetchGallery(galleryID);
-  const comments = await fetchComments(galleryID);
+  const comments = CONFIG.disable_comments
+    ? null
+    : await fetchComments(galleryID);
   return h.view('gallery', {
     ...gallery,
     comments,
