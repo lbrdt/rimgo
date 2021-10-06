@@ -21,6 +21,7 @@ export const handleAlbum = async (request: Hapi.Request, h: Hapi.ResponseToolkit
   const url = await fetchAlbumURL(request.params.albumID);
   return h.view('album', {
     url,
+    title: CONFIG.page_title,
     util,
   });
 };
@@ -44,6 +45,7 @@ export const handleGallery = async (request: Hapi.Request, h: Hapi.ResponseToolk
   return h.view('gallery', {
     ...gallery,
     comments,
+    title: CONFIG.page_title,
     util,
   });
 };
