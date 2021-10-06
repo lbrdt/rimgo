@@ -1,22 +1,29 @@
 'use strict';
 
 import Hapi = require('@hapi/hapi');
+const Exiting = require('exiting');
 import Path  = require('path');
 import { handleAlbum, handleGallery, handleMedia, handleTag, handleUser } from './handlers';
 
 import CONFIG from './config';
 
-const init = async () => {
-  const server = Hapi.server({
-    port: CONFIG.port,
-    host: CONFIG.host,
-    address: CONFIG.address,
-    routes: {
-      files: {
-        relativeTo: Path.join(__dirname, 'static')
-      }
+const server = Hapi.server({
+  port: CONFIG.port,
+  host: CONFIG.host,
+  address: CONFIG.address,
+  routes: {
+    files: {
+      relativeTo: Path.join(__dirname, 'static')
     }
-  });
+  }
+});
+server.events.on('stop', () => {
+  console.log('Server stopped.');
+});
+
+const manager = Exiting.createManager(server);
+
+const init = async () => {
   await server.register(require('@hapi/vision'));
   await server.register(require('@hapi/inert'));
 
@@ -62,7 +69,7 @@ const init = async () => {
     handler: handleGallery,
   });
 
-  await server.start();
+  await manager.start();
   console.log('Server running on %s', server.info.uri);
 };
 

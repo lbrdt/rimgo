@@ -30,6 +30,7 @@
     "@hapi/inert": "^6.0.4",
     "@hapi/vision": "^6.1.0",
     "cheerio": "^1.0.0-rc.10",
+    "exiting": "^6.0.1",
     "got": "^11.8.2",
     "hpagent": "^0.1.2",
     "pug": "^3.0.2"
