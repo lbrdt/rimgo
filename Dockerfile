@@ -1,8 +1,12 @@
 FROM node:16-slim as builder
 
-COPY . /app
+RUN mkdir /app
+COPY package.json /app/
+COPY package-lock.json /app/
 WORKDIR /app
-RUN npm ci && npm run build
+RUN npm ci
+COPY . /app
+RUN npm run build
 
 FROM node:16-slim
 
