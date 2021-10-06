@@ -137,3 +137,20 @@ svg:not(:root) {
   font-size: 12px;
   line-height: 12px;
 }
+
+.Gallery-ContentWrapper .Gallery-Content--media {
+    max-width: 100%;
+    margin-bottom: 24px;
+    background-color: rgba(0,0,0,.1);
+    min-height: 140px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+
+.Gallery-ContentWrapper .Gallery-Content--mediaContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}

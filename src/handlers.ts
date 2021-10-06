@@ -1,6 +1,6 @@
 import Hapi = require('@hapi/hapi');
 import '@hapi/vision';
-import { fetchAlbumURL, fetchComments, fetchGallery, fetchMedia } from './fetchers';
+import { fetchAlbum, fetchAlbumURL, fetchComments, fetchGallery, fetchMedia } from './fetchers';
 import * as util from './util';
 
 import CONFIG from './config';
@@ -18,12 +18,23 @@ export const handleMedia = async (request: Hapi.Request, h: Hapi.ResponseToolkit
 
 export const handleAlbum = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
   // https://imgur.com/a/DfEsrAB
-  const url = await fetchAlbumURL(request.params.albumID);
-  return h.view('album', {
-    url,
-    title: CONFIG.page_title,
-    util,
-  });
+  const albumID = request.params.albumID;
+  if (CONFIG.disable_comments) {
+    const url = await fetchAlbumURL(albumID);
+    return h.view('bare-album', {
+      url,
+      pageTitle: CONFIG.page_title,
+      util,
+    });
+  } else {
+    const album = await fetchAlbum(albumID);
+    return h.view('gallery', {
+      ...album,
+      pageTitle: CONFIG.page_title,
+      util,
+    });
+
+  }
 };
 
 export const handleUser = (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
@@ -45,7 +56,7 @@ export const handleGallery = async (request: Hapi.Request, h: Hapi.ResponseToolk
   return h.view('gallery', {
     ...gallery,
     comments,
-    title: CONFIG.page_title,
+    pageTitle: CONFIG.page_title,
     util,
   });
 };
