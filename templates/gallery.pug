@@ -35,9 +35,15 @@ mixin commentbox(comment)
 
 mixin media(m)
   div(class='Gallery-Content--mediaContainer')
-    div(class='Gallery-Content--media')
-      div(class='imageContainer')
-        img(src=util.proxyURL(m.url))
+    if m.type === 'video'
+      .PostVideo
+        .PostVideo-video-wrapper
+          video(controls)
+            source(type=m.mime_type src=util.proxyURL(m.url))
+    else
+      div(class='Gallery-Content--media')
+        div(class='imageContainer')
+          img(src=util.proxyURL(m.url))
 
 html
   head
