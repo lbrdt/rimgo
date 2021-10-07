@@ -1,8 +1,7 @@
-'use strict';
-
 import Hapi = require('@hapi/hapi');
+/* eslint-disable @typescript-eslint/no-var-requires */
 const Exiting = require('exiting');
-import Path  = require('path');
+import Path = require('path');
 import { handleAlbum, handleGallery, handleMedia, handleTag, handleUser } from './handlers';
 
 import CONFIG from './config';
@@ -31,10 +30,10 @@ const init = async () => {
     method: 'GET',
     path: '/css/{param*}',
     handler: ({
-        directory: {
-            path: Path.join(__dirname, 'static/css')
-        }
-    } as any)
+      directory: {
+        path: Path.join(__dirname, 'static/css')
+      }
+    } as any) // eslint-disable-line @typescript-eslint/no-explicit-any
   });
   server.views({
     engines: {

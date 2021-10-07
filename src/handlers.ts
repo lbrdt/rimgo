@@ -26,14 +26,14 @@ export const handleAlbum = async (request: Hapi.Request, h: Hapi.ResponseToolkit
       pageTitle: CONFIG.page_title,
       util,
     });
-  } else {
-    const url = await fetchAlbumURL(albumID);
-    return h.view('bare-album', {
-      url,
-      pageTitle: CONFIG.page_title,
-      util,
-    });
   }
+  const url = await fetchAlbumURL(albumID);
+  return h.view('bare-album', {
+    url,
+    pageTitle: CONFIG.page_title,
+    util,
+  });
+
 };
 
 export const handleUser = (request: Hapi.Request, h: Hapi.ResponseToolkit) => {

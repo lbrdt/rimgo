@@ -5,15 +5,6 @@ interface Account {
   created_at: string;
 }
 
-interface Gallery {
-  id: string;
-  title: string;
-  account: Account;
-  media: Media[];
-  tags: Tag[];
-  cover: Media;
-}
-
 type MediaMimeType = 'image/jpeg' | 'image/png' | 'image/gif';
 type MediaType = 'image';
 type MediaExt = 'jpeg' | 'png' | 'gif';
@@ -64,8 +55,8 @@ interface Comment {
   platform_id: number;
   platform: MediaPlatform;
   created_at: string;
-  updated_at: "2021-10-01T00:08:51Z",
-  deleted_at: null,
+  updated_at: string;
+  deleted_at: null;
   next: null; //?
   comments: Comment[];
   account: {
@@ -75,3 +66,11 @@ interface Comment {
   }
 }
 
+interface Gallery {
+  id: string;
+  title: string;
+  account: Account;
+  media: Media[];
+  tags: Tag[];
+  cover: Media;
+}
