@@ -1,6 +1,6 @@
 import Hapi = require('@hapi/hapi');
 import '@hapi/vision';
-import { fetchAlbum, fetchAlbumURL, fetchComments, fetchGallery, fetchMedia } from './fetchers';
+import { fetchAlbum, fetchAlbumURL, fetchComments, fetchGallery, fetchMedia, fetchUserPosts } from './fetchers';
 import * as util from './util';
 
 import CONFIG from './config';
@@ -35,9 +35,18 @@ export const handleAlbum = async (request: Hapi.Request, h: Hapi.ResponseToolkit
   });
 };
 
-export const handleUser = (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
+export const handleUser = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
   // https://imgur.com/user/MomBotNumber5
-  throw new Error('not implemented');
+  if (!CONFIG.use_api) {
+    return 'User page disabled. Rimgu administrator needs to enable API for this to work.';
+  }
+  const userID = request.params.userID;
+  const userPosts = await fetchUserPosts(userID);
+  return h.view('user-posts', {
+    userPosts,
+    pageTitle: CONFIG.page_title,
+    util,
+  });
 };
 
 export const handleTag = (request: Hapi.Request, h: Hapi.ResponseToolkit) => {

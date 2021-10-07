@@ -291,3 +291,101 @@ a {
   color: #dadce2;
   flex-grow: 1;
 }
+
+
+/* USER POSTS */
+.ProfilePost {
+  width: 320px;
+  display: inline-block;
+  margin: 0 8px;
+}
+
+.Post-item {
+  /* height: 100%; */
+  display: block;
+  margin-bottom: 30px;
+  background-repeat: no-repeat;
+  cursor: pointer;
+  background-size: 145px;
+  position: relative;
+  color: #fff;
+  box-shadow: 0 2px 4px 0 rgba(0,0,0,.4);
+  background-color: #2e3035;
+  transition: box-shadow .25s;
+  -webkit-transition: box-shadow .25s;
+}
+
+.Post-item-container {
+  /* height: 100%; */
+  position: relative;
+  overflow: hidden;
+  border-radius: 3px;
+}
+
+.Post-item-media {
+  overflow: hidden;
+}
+
+.Post-item-meta {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  left: 15px;
+  font-size: 12px;
+  line-height: 16px;
+}
+
+.Post-item-media img {
+  width: 100%;
+}
+
+.Post-item-info, .PostInfo {
+  display: flex;
+  align-items: center;
+  font-size: 12px;
+  line-height: 1.5;
+  letter-spacing: .3px;
+}
+
+.Post-item-info {
+  justify-content: space-between;
+  color: hsla(0,0%,100%,.6);
+  min-height: 8px;
+  padding: .5rem 1rem;
+  color: #b4b9c2;
+}
+
+Post-item-title {
+  font-weight: 600;
+  line-height: 1.14;
+  font-size: 14px;
+  text-align: left;
+  color: #fff;
+  display: inline-block;
+  max-height: 45px;
+  overflow: hidden;
+  padding: 0 15px;
+}
+
+.Media {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.Post-item-stat {
+  z-index: 1;
+  opacity: .65;
+}
+
+.MediaBody {
+  margin: 0 .25rem;
+}
+
+.Post-item-media .imageContainer {
+  max-height: 500px;
+}
+
+.Post-item-media .PostVideo {
+  max-height: 500px;
+}

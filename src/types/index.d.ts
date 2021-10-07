@@ -8,6 +8,7 @@ interface Account {
 type MediaMimeType = 'image/jpeg' | 'image/png' | 'image/gif';
 type MediaType = 'image';
 type MediaExt = 'jpeg' | 'png' | 'gif';
+type Sorting = 'newest' | 'oldest' | 'best';
 
 interface Tag {
   tag: string;

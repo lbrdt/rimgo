@@ -62,6 +62,17 @@ export const fetchComments = async (galleryID: string): Promise<Comment[]> => {
   /* eslint-enable max-len */
 }
 
+export const fetchUserPosts = async (userID: string, sort: Sorting = 'newest'): Promise<Comment[]> => {
+  /* eslint-disable max-len */
+  // https://api.imgur.com/3/account/mombotnumber5/submissions/0/newest?album_previews=1&client_id=${CLIENT_ID}
+  const response = await got(
+    `https://api.imgur.com/3/account/${userID.toLowerCase()}/submissions/0/newest?album_previews=1&client_id=${CONFIG.imgur_client_id}`,
+    { agent }
+  );
+  return JSON.parse(response.body).data;
+  /* eslint-enable max-len */
+}
+
 export const fetchGallery = async (galleryID: string): Promise<Gallery> => {
   // https://imgur.com/gallery/g1bk7CB
   const response = await got(`https://imgur.com/gallery/${galleryID}`, { agent });
