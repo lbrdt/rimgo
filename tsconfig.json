@@ -5,7 +5,7 @@
         "noImplicitAny": true,
         "strictNullChecks": true,
         "declaration": true,
-        "sourceMap": false,
+        "sourceMap": true,
         "outDir": "dist",
         "typeRoots": [
             "src/types/"
