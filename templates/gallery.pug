@@ -51,7 +51,7 @@ html
         div(class='Gallery-Byline')
           if account_id > 0
             a(class='author-link' title='View profile of '+account.username, href='/user/'+account.username)
-              span(class='UserAvatar', title=account.username, style='background-image: url("' + util.proxyURL(account.avatar_url) + '");')
+              span(class='UserAvatar Avatar', title=account.username, style='background-image: url("' + util.proxyURL(account.avatar_url) + '");')
           div(class='Info-Wrapper')
             if account_id > 0
               div(class='Info')

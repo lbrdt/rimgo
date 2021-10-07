@@ -1,3 +1,9 @@
+body {
+  font-size: 100%;
+  font-family: Proxima Nova Regular,Helvetica Neue,Helvetica,Arial,sans-serif;
+  color: #fff;
+}
+
 .UserAvatar {
   display: block;
   height: 32px;
@@ -19,6 +25,19 @@
   font-family: Proxima Nova Bold,Helvetica Neue,Helvetica,Arial,sans-serif;
   transition: box-shadow .2s ease-out;
   text-transform: lowercase;
+}
+
+.GalleryComment {
+  margin-bottom: 16px;
+  cursor: pointer;
+  position: relative;
+}
+
+.GalleryComment-wrapper {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  position: relative;
 }
 
 .GalleryComment-avatar-bar .avatar span {
@@ -45,6 +64,10 @@
   font-size: 12px;
   line-height: 12px;
   color: #b4b9c2;
+  justify-content: space-between;
+  align-items: center;
+  color: #b4b9c2;
+  margin-bottom: 4px;
 }
 
 .GalleryComment-avatar-bar {
@@ -83,6 +106,13 @@
   line-height: 150%;
   overflow-wrap: break-word;
   color: #eff1f4;
+}
+
+.GalleryComment-actions {
+  color: #b4b9c2;
+  font-family: Proxima Nova Bold,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 12px;
+  line-height: 12px;
 }
 
 .GalleryComment-actions .points {
@@ -139,18 +169,125 @@ svg:not(:root) {
 }
 
 .Gallery-ContentWrapper .Gallery-Content--media {
-    max-width: 100%;
-    margin-bottom: 24px;
-    background-color: rgba(0,0,0,.1);
-    min-height: 140px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
+  max-width: 100%;
+  margin-bottom: 24px;
+  background-color: rgba(0,0,0,.1);
+  min-height: 140px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
 }
 
 .Gallery-ContentWrapper .Gallery-Content--mediaContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+a.author-link .UserAvatar {
+  display: block;
+}
+
+.Gallery-Byline .Avatar {
+  background-color: #43d0bd;
+  border-radius: 50%;
+  height: 32px;
+  width: 32px;
+  overflow: hidden;
+  transition: transform .2s ease-in-out;
+}
+
+.Gallery-Byline .Info-Wrapper {
+  display: flex;
+  flex-direction: column;
+  margin: 0 32px 0 12px;
+  flex-grow: 1;
+  justify-content: space-between;
+  justify-content: space-around;
+  overflow: hidden;
+}
+
+.Gallery-Byline .Info-Wrapper .Meta {
+  font-family: Proxima Nova Regular,Helvetica Neue,Helvetica,Arial,sans-serif;
+  color: #b4b9c2;
+  font-size: 12px;
+  line-height: 12px;
+}
+
+.Gallery-Byline .Info .author-name {
+  min-width: 0;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  font-family: Proxima Nova Bold,Helvetica Neue,Helvetica,Arial,sans-serif;
+  color: #1bb76e;
+  cursor: pointer;
+}
+
+.Gallery-Byline .Info {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  font-size: 14px;
+  font-family: Proxima Nova Bold,Helvetica Neue,Helvetica,Arial,sans-serif;
+  align-items: center;
+}
+
+a {
+  color: #01b96b;
+  text-decoration: none;
+}
+
+.Gallery-Byline {
+  display: flex;
+  justify-content: flex-start;
+  height: 32px;
+  margin: 16px 0 24px;
+}
+
+.Gallery-Title {
+  font-family: Proxima Nova Bold,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 28px;
+  line-height: 130%;
+  color: #fff;
+  overflow-wrap: break-word;
+}
+
+.Gallery-Header {
+  position: relative;
+  z-index: 1;
+}
+
+.Gallery-Byline .Info-Wrapper .Meta .delimiter {
+  padding: 0 5px;
+}
+
+.GalleryComment-byLine .delimiter {
+  margin: 0 8px;
+}
+
+.Gallery-Content--tags .TagPill {
+  margin-top: 10px;
+  margin-right: 10px;
+}
+
+.CommentsList-headline {
+  background: repeat-x 0 100% url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Cpath fill='%23585D6A' d='M0 0h1v.5H0z'/%3E%3C/svg%3E");
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-bottom: 14px;
+  margin-bottom: 16px;
+  margin-top: 46px;
+}
+
+.CommentsList-headline--counter {
+  font-family: Proxima Nova Bold,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 15px;
+  line-height: 15px;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  color: #dadce2;
+  flex-grow: 1;
 }
