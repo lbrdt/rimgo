@@ -14,7 +14,10 @@ const server = Hapi.server({
     files: {
       relativeTo: Path.join(__dirname, 'static')
     }
-  }
+  },
+  debug: {
+    request: ['error']
+  },
 });
 server.events.on('stop', () => {
   console.log('Server stopped.');
