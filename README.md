@@ -9,25 +9,35 @@ It's lightweight and easy to configure.
 Inspired by and (soon) integratable with:
 
 * [searx](https://github.com/searx/searx)
-* [teddit](https://codeberg.org/teddit/teddit)
-* [Privacy Redirect](https://github.com/SimonBrazell/privacy-redirect)
+* [teddit](https://codeberg.org/teddit/teddit) ([integration](https://codeberg.org/teddit/teddit/pulls/249))
+* [Privacy Redirect](https://github.com/SimonBrazell/privacy-redirect) ([integration](https://github.com/SimonBrazell/privacy-redirect/pull/303))
 * [nitter](https://github.com/zedeus/nitter)
 * [bibliogram](https://sr.ht/~cadence/bibliogram/)
 
+
+Features:
+
+- [x] URL-compatible with i.imgur.com - just replace the domain in the URL
+- [x] Images and videos (gifv, mp4) returned directly
+- [x] Galleries with comments
+- [x] Albums
+- [x] Supports http(s) forward proxy
+
 This is currently very early stage software. Some things left to implement (contributions welcome!):
 
-[ ] User page
-[ ] Tag page
-[ ] Localization/internationalization
-[ ] Pretty CSS styling
-[ ] Automatically fetch / rotate / renew client ID
-[ ] Support for other popular image sites than only imgur
-[ ] Prometheus metrics
+- [ ] User page
+- [ ] Tag page
+- [ ] Streaming (currently media is downloaded in full in rimgu before it's returned)
+- [ ] Localization/internationalization
+- [ ] Pretty CSS styling (responsive?)
+- [ ] Automatically fetch / rotate / renew client ID
+- [ ] Support for other popular image sites than only imgur
+- [ ] Prometheus metrics
 
 Things that are *currently* considered out of scope:
 
 * Uploading/commenting/voting/etc - rimgu is read-only for now.
-* Caching, authentication, serving HTTPS, rate limiting etc - Just use a load balancer like haproxy/envoy/nginx/traefik/caddy.
+* Caching, authentication, serving HTTPS, rate limiting etc - Just use a proxy or load balancer like squid/haproxy/envoy/nginx/traefik/caddy.
 * Anything requiring client-side JS or client-side directly interacting with upstream servers
 
 ## Building
