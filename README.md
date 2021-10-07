@@ -16,6 +16,8 @@ Inspired by and (soon) integratable with:
 
 This is currently very early stage software. Some things left to implement (contributions welcome!):
 
+[ ] User page
+[ ] Tag page
 [ ] Localization/internationalization
 [ ] Pretty CSS styling
 [ ] Automatically fetch / rotate / renew client ID
@@ -58,6 +60,8 @@ $ node dist/index.js
 $ docker run -p 8080:8080 -e -it RIMGU_ADDRESS=0.0.0.0 -e RIMGU_PORT=8080 rimgu:latest
 ```
 
+If you decide to run a public instance, consider opening an issue to have it listed here :)
+
 ## Configuration
 
 Rimgu is configured via environment variables. See available variable in [src/config.ts](./src/config.ts).
@@ -69,9 +73,9 @@ Some imgur functionality (comments, full albums) requires a provisioned client I
 
 You can get a client ID by opening https://imgur.com in a web browser and looking for requests to `https://api.imgur.com/...?client_id=1234567deadbeef` under "Network" in the developer console.
 
-*To run without API/key*: `RIMGU_USE_API=false`
+__To run without API/key__: `RIMGU_USE_API=false`
 
-*To run with API/key*: `RIMGU_USE_API=true RIMGU_IMGUR_CLIENT_ID=1234567deadbeef`
+__To run with API/key__: `RIMGU_USE_API=true RIMGU_IMGUR_CLIENT_ID=1234567deadbeef`
 
 This key may be used to track you and could be banned when overused. Keep this in mind before exposing a public instance with a client key associated with your personal imgur account. Consider any ToS you may have signed before associating a personal imgur account with a public instance.
 
