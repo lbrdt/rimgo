@@ -7,6 +7,7 @@
   "scripts": {
     "start": "node dist/index.js",
     "build": "npx tsc",
+    "lint": "eslint -c .eslintrc --max-warnings 0 'src/**/*.ts'",
     "watch": "npx tsc --watch",
     "test": "npx mocha -r ts-node/register test/**/*.test.ts",
     "dev:tsc": "tsc --watch -p .",
@@ -21,6 +22,9 @@
     "@types/hapi__vision": "^5.5.3",
     "@types/node": "^16.10.3",
     "@types/pug": "^2.0.5",
+    "@typescript-eslint/eslint-plugin": "^4.33.0",
+    "@typescript-eslint/parser": "^4.33.0",
+    "eslint": "^7.32.0",
     "nodemon": "^2.0.13",
     "npm-run-all": "^4.1.5",
     "typescript": "^4.4.3"
