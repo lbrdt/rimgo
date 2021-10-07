@@ -74,8 +74,8 @@ export const fetchGallery = async (galleryID: string): Promise<Gallery> => {
   if (!postDataMatches || postDataMatches.length < 2) {
     throw new Error('Could not parse gallery data');
   }
-  const postData = JSON.parse(JSON.parse(postDataMatches[1]));
-  return postData;
+  const body = postDataMatches[1].replace(/\\'/g, "'");
+  return JSON.parse(JSON.parse(body));
 };
 
 export const fetchMedia = async (filename: string): Promise<Response<string>> =>

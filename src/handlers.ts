@@ -33,7 +33,6 @@ export const handleAlbum = async (request: Hapi.Request, h: Hapi.ResponseToolkit
     pageTitle: CONFIG.page_title,
     util,
   });
-
 };
 
 export const handleUser = (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
