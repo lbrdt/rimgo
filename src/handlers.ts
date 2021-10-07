@@ -19,21 +19,20 @@ export const handleMedia = async (request: Hapi.Request, h: Hapi.ResponseToolkit
 export const handleAlbum = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
   // https://imgur.com/a/DfEsrAB
   const albumID = request.params.albumID;
-  if (CONFIG.disable_comments) {
-    const url = await fetchAlbumURL(albumID);
-    return h.view('bare-album', {
-      url,
-      pageTitle: CONFIG.page_title,
-      util,
-    });
-  } else {
+  if (CONFIG.use_api) {
     const album = await fetchAlbum(albumID);
     return h.view('gallery', {
       ...album,
       pageTitle: CONFIG.page_title,
       util,
     });
-
+  } else {
+    const url = await fetchAlbumURL(albumID);
+    return h.view('bare-album', {
+      url,
+      pageTitle: CONFIG.page_title,
+      util,
+    });
   }
 };
 
@@ -50,9 +49,9 @@ export const handleTag = (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
 export const handleGallery = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
   const galleryID = request.params.galleryID;
   const gallery = await fetchGallery(galleryID);
-  const comments = CONFIG.disable_comments
-    ? null
-    : await fetchComments(galleryID);
+  const comments = CONFIG.use_api
+    ? await fetchComments(galleryID)
+    : null;
   return h.view('gallery', {
     ...gallery,
     comments,
