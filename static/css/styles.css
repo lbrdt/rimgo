@@ -389,3 +389,71 @@ Post-item-title {
 .Post-item-media .PostVideo {
   max-height: 500px;
 }
+
+
+/* TAG PAGE */
+
+.Cover-item-count {
+    text-transform: uppercase;
+}
+
+.Cover-stats {
+    font-size: 16px;
+    margin: 13px 0 20px;
+}
+
+.Cover-description {
+    margin: 0 0 10px;
+    font-size: 22px;
+    max-width: 390px;
+}
+
+Cover-description, .Cover-name, .Cover-stats {
+    text-align: center;
+}
+
+.Cover-name {
+    font-size: 52px;
+    color: #fff;
+    margin: 0;
+    font-family: Proxima Nova ExtraBold,Helvetica Neue,Helvetica,Arial,sans-serif;
+}
+
+.Cover-metadata {
+    position: relative;
+    margin: 0 auto;
+    text-align: center;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: center;
+    align-content: stretch;
+    align-items: center;
+    z-index: 0;
+}
+
+.NewCover-change-sort-wrapper .Dropdown, .NewCover .Cover-metadata {
+    margin: auto;
+}
+
+.NewCover {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    background-size: cover;
+    background-position: 50%;
+    background-color: #474a51;
+    padding-bottom: 76px;
+    opacity: 1;
+    transition: opacity .5s,box-shadow .4s;
+}
+
+.App-cover {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+}

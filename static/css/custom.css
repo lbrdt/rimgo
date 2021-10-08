@@ -2,3 +2,12 @@ img.album-img {
   max-width: 100%;
   max-height: 100%;
 }
+
+.TagsCover {
+  top: 0px;
+  min-height: 351px;
+}
+
+.ProfilePosts-posts {
+  margin-top: 311px;
+}

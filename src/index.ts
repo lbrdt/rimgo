@@ -82,7 +82,8 @@ process.on('unhandledRejection', (err) => {
 
 if (!CONFIG.use_api) {
   console.log('Running without imgur client ID; certain views and functionality missing.');
-} else if (!CONFIG.imgur_client_id) {
+}
+else if (!CONFIG.imgur_client_id) {
   console.error('imgur_client_id missing. Configure it via RIMGU_IMGUR_CLIENT_ID  or set RIMGU_USE_API=false');
   process.exit(1);
 }

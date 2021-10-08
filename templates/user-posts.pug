@@ -3,10 +3,18 @@ html
     include includes/head.pug
   body
     .Profile
-      .App-cover.NewCover.ProfileCover
+      if tag
+        .App-cover.NewCover.TagsCover(style='background-image: linear-gradient(rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.3) 20%), url("/' + tag.background_hash + '.jpg");')
+          .Cover-metadata
+            h1.Cover-name= tag.display_name
+            p.description= tag.description
+            .Cover-stats
+              .Cover-item-count #{tag.total_items} posts
+      else if user
+        .App-cover.NewCover.ProfileCover
       .ProfilePosts-posts
         .ProfilePosts-top
-          each post in userPosts
+          each post in posts
             div.ProfilePost
               a.Post-item.novote(href="/gallery/"+post.id)
                 .Post-item-container

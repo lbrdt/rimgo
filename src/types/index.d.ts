@@ -8,7 +8,7 @@ interface Account {
 type MediaMimeType = 'image/jpeg' | 'image/png' | 'image/gif';
 type MediaType = 'image';
 type MediaExt = 'jpeg' | 'png' | 'gif';
-type Sorting = 'newest' | 'oldest' | 'best';
+type Sorting = 'newest' | 'oldest' | 'best' | 'viral';
 
 interface Tag {
   tag: string;
@@ -74,4 +74,57 @@ interface Gallery {
   media: Media[];
   tags: Tag[];
   cover: Media;
+}
+
+interface PostTag {
+  name: string;
+  display_name: string;
+  followers: number;
+  total_items: number;
+  following: boolean;
+  is_whitelisted: boolean;
+  background_hash: string;
+  thumbnail_hash: string;
+  accent: string;
+  background_is_animated: boolean;
+  thumbnail_is_animated: boolean;
+  is_promoted: boolean;
+  description: string;
+  logo_hash: string;
+  logo_destination_url: string;
+  description_annotations: {}
+}
+
+interface Post {
+  id: string;
+  account_id: number;
+  type: MediaMimeType;
+  animated: boolean;
+  width: number;
+  height: number;
+  size: number;
+  views: number;
+  bandwidth: number;
+  vote: null;
+  favorite: boolean;
+  nsfw: boolean;
+  section: string;
+  account_url: string;
+  is_ad: boolean;
+  in_most_viral: boolean;
+  has_sound: boolean;
+  tags: PostTag[];
+  link: string;
+  comment_count: number;
+  ups: number;
+  downs: number;
+  score: number;
+  points: number;
+  is_album: boolean;
+}
+
+interface TagResult extends PostTag {
+  items: Post[];
+  success: boolean;
+  status: number;
 }

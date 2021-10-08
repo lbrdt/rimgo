@@ -1,6 +1,7 @@
 import Hapi = require('@hapi/hapi');
 import '@hapi/vision';
-import { fetchAlbum, fetchAlbumURL, fetchComments, fetchGallery, fetchMedia, fetchUserPosts } from './fetchers';
+import { fetchAlbum, fetchAlbumURL, fetchComments, fetchGallery, fetchMedia, fetchTagPosts, fetchUserPosts }
+  from './fetchers';
 import * as util from './util';
 
 import CONFIG from './config';
@@ -41,17 +42,27 @@ export const handleUser = async (request: Hapi.Request, h: Hapi.ResponseToolkit)
     return 'User page disabled. Rimgu administrator needs to enable API for this to work.';
   }
   const userID = request.params.userID;
-  const userPosts = await fetchUserPosts(userID);
+  const posts = await fetchUserPosts(userID);
   return h.view('user-posts', {
-    userPosts,
+    posts,
     pageTitle: CONFIG.page_title,
     util,
   });
 };
 
-export const handleTag = (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
+export const handleTag = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
   // https://imgur.com/t/funny
-  throw new Error('not implemented');
+  if (!CONFIG.use_api) {
+    return 'Tag page disabled. Rimgu administrator needs to enable API for this to work.';
+  }
+  const tagID = request.params.tagID;
+  const result = await fetchTagPosts(tagID);
+  return h.view('user-posts', {
+    posts: result.items,
+    pageTitle: CONFIG.page_title,
+    tag: result,
+    util,
+  });
 };
 
 export const handleGallery = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
