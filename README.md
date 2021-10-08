@@ -105,3 +105,12 @@ $ npm run lint
 This software is released under the AGPL 3.0 license. In short, this means that if you make any modifications to the code and then publish the result (e.g. by hosting the result on a webserver), you must publicly distribute your changes and declare that they also use AGPL 3.0.
 
 You are also requested to not remove attribution and donation information from forks and publications.
+
+## Support
+
+Donations are welcome and will contribute to development, maintenance and a future public hosted instance.
+
+* XMR: `8C58RTj15HbWRhjqhdk9mmg5ro1GoTXH3Z5cR7nPATM3QvudQ25yoXA7rqPGsuuxK6YWV2zrvhcXjPhip2nEtUhmDh9goqT`
+* BTC: `bc1qwzdqywdezr5afyrtqenj7yz3fpz2qzpx7lca8j`
+* ETH: `0x3FE87870e80a56c02D98a4E3CE946318b917d719`
+* BCH: `qzxxuatxvfz5wjdyckrlc9hclvfvmfrc6qr9nzzaue`
