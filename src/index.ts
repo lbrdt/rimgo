@@ -2,7 +2,7 @@ import Hapi = require('@hapi/hapi');
 /* eslint-disable @typescript-eslint/no-var-requires */
 const Exiting = require('exiting');
 import Path = require('path');
-import { handleAlbum, handleGallery, handleMedia, handleTag, handleUser } from './handlers';
+import { handleAlbum, handleGallery, handleMedia, handleTag, handleUser, handleUserCover } from './handlers';
 
 import CONFIG from './config';
 
@@ -64,6 +64,11 @@ const init = async () => {
     method: 'GET',
     path: '/user/{userID?}',
     handler: handleUser,
+  });
+  server.route({
+    method: 'GET',
+    path: '/user/{userID}/cover',
+    handler: handleUserCover,
   });
   server.route({
     method: 'GET',

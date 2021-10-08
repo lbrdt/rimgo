@@ -54,6 +54,14 @@ export const handleUser = async (request: Hapi.Request, h: Hapi.ResponseToolkit)
   });
 };
 
+export const handleUserCover = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
+  const userID = request.params.userID;
+  const result = await fetchMedia(`/user/${userID}/cover?maxwidth=2560`);
+  const response = h.response(result.rawBody)
+    .header('Content-Type', result.headers["content-type"] || `image/jpeg`);
+  return response;
+};
+
 export const handleTag = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
   // https://imgur.com/t/funny
   if (!CONFIG.use_api) {
