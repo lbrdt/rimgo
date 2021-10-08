@@ -14,7 +14,7 @@ mixin commentbox(comment)
             a(class='author-name', title='View profile of '+comment.account.username, href='/user/'+comment.account.username) #{comment.account.username}
             span(class="date", title=comment.created_at)
               span(class="delimiter") •
-              span #{comment.created_at} via <a class="platform bold" href="/apps">#{comment.platform}</a>
+              span #{comment.created_at} via <span class="platform bold">#{comment.platform}</a>
         div(class='GalleryComment-body')
           span(class='Linkify')
             | !{util.linkify(comment.comment)}
