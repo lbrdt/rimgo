@@ -46,7 +46,7 @@ export const handleUser = async (request: Hapi.Request, h: Hapi.ResponseToolkit)
   const userID = request.params.userID;
   const user = await fetchUserInfo(userID);
   const posts = await fetchUserPosts(userID);
-  return h.view('user-posts', {
+  return h.view('posts', {
     posts,
     user,
     pageTitle: CONFIG.page_title,
@@ -61,7 +61,7 @@ export const handleTag = async (request: Hapi.Request, h: Hapi.ResponseToolkit) 
   }
   const tagID = request.params.tagID;
   const result = await fetchTagPosts(tagID);
-  return h.view('user-posts', {
+  return h.view('posts', {
     posts: result.items,
     pageTitle: CONFIG.page_title,
     tag: result,
