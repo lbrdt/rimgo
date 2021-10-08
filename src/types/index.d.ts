@@ -128,3 +128,16 @@ interface TagResult extends PostTag {
   success: boolean;
   status: number;
 }
+
+interface UserResult {
+  id: number;
+  username: string;
+  bio: string;
+  reputation_count: number;
+  reputation_name: string;
+  avatar_id: string;
+  avatar_url: string;
+  cover_id: string;
+  cover_url: string;
+  created_at: string;
+}

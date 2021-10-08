@@ -1,7 +1,9 @@
 import Hapi = require('@hapi/hapi');
 import '@hapi/vision';
-import { fetchAlbum, fetchAlbumURL, fetchComments, fetchGallery, fetchMedia, fetchTagPosts, fetchUserPosts }
-  from './fetchers';
+import
+{
+  fetchAlbum, fetchAlbumURL, fetchComments, fetchGallery, fetchMedia, fetchTagPosts, fetchUserInfo, fetchUserPosts
+} from './fetchers';
 import * as util from './util';
 
 import CONFIG from './config';
@@ -42,9 +44,11 @@ export const handleUser = async (request: Hapi.Request, h: Hapi.ResponseToolkit)
     return 'User page disabled. Rimgu administrator needs to enable API for this to work.';
   }
   const userID = request.params.userID;
+  const user = await fetchUserInfo(userID);
   const posts = await fetchUserPosts(userID);
   return h.view('user-posts', {
     posts,
+    user,
     pageTitle: CONFIG.page_title,
     util,
   });
