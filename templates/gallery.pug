@@ -6,8 +6,11 @@ mixin commentbox(comment)
           div(class='Meta')
             div(class='GalleryComment-avatar-bar')
               div(class='avatar')
-                a(title='View profile of '+comment.account.username, href='/user/'+comment.account.username)
-                  span(title=comment.account.username, style='background-image: url("' + util.proxyURL(comment.account.avatar) + '");')
+                if comment.account.username === '[deleted]'
+                  span(title='[deleted]')
+                else
+                  a(title='View profile of '+comment.account.username, href='/user/'+comment.account.username)
+                    span(title=comment.account.username, style='background-image: url("' + util.proxyURL(comment.account.avatar) + '");')
             a(class='author-name', title='View profile of '+comment.account.username, href='/user/'+comment.account.username) #{comment.account.username}
             span(class="date", title=comment.created_at)
               span(class="delimiter") •
