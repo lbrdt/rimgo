@@ -21,18 +21,22 @@ Features:
 - [x] Images and videos (gifv, mp4) returned directly
 - [x] Galleries with comments
 - [x] Albums
+- [x] User page
+- [x] Tag page
 - [x] Supports http(s) forward proxy
 
 This is currently very early stage software. Some things left to implement (contributions welcome!):
 
-- [ ] User page
-- [ ] Tag page
 - [ ] Streaming (currently media is downloaded in full in rimgu before it's returned)
 - [ ] Localization/internationalization
 - [ ] Pretty CSS styling (responsive?)
 - [ ] Automatically fetch / rotate / renew client ID
 - [ ] Support for other popular image sites than only imgur
+- [ ] Filtering and exploration on user/tags pages
+- [ ] Responsive scaling of videos on user/tags pages
 - [ ] Prometheus metrics
+- [ ] Logo
+- [ ] SOCKS5 proxy support
 
 Things that are *currently* considered out of scope:
 
@@ -74,7 +78,7 @@ If you decide to run a public instance, consider opening an issue to have it lis
 
 ## Configuration
 
-Rimgu is configured via environment variables. See available variable in [src/config.ts](./src/config.ts).
+Rimgu is configured via environment variables. See available variables in [src/config.ts](./src/config.ts).
 
 ### API and client ID
 
