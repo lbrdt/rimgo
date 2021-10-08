@@ -2,4 +2,6 @@ html
   head
     include includes/head.pug
   body
-    img(src=util.proxyURL(url), alt='' class='album-img')
+    include includes/header.pug
+    .App
+      img(src=util.proxyURL(url), alt='' class='album-img')

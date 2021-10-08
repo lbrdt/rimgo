@@ -11,3 +11,53 @@ img.album-img {
 .ProfilePosts-posts {
   margin-top: 311px;
 }
+
+body {
+  margin: 0;
+}
+
+
+.App {
+  padding: 16px;
+}
+
+
+.Navbar {
+  padding: 16px;
+  background: #222;
+}
+
+.NavbarContainer-left {
+  font-size: 2em;
+  font-weight: bold;
+  float: left;
+  padding: 8px;
+}
+
+.NavbarContainer-right {
+  /* margin: 0 0 0 auto; */
+  align-items: end;
+  /* flex: 1; */
+  justify-content: space-around;
+  text-align: right;
+  float: right;
+  padding: 8px;
+}
+
+.NavbarContainer-left, .NavbarContainer-right {
+  display: block;
+}
+
+.HomeNavbar {
+  position: sticky;
+  position: -webkit-sticky;
+  padding: 0;
+  display: inline-block;
+  top: 0;
+}
+.Navbar {
+  width: 100%;
+  z-index: 1000;
+  text-align: center;
+  margin: 0 auto;
+}

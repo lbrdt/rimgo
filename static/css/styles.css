@@ -1,7 +1,10 @@
 body {
   font-size: 100%;
   font-family: Proxima Nova Regular,Helvetica Neue,Helvetica,Arial,sans-serif;
+  background-color: #2e3035;
   color: #fff;
+  overflow-y: scroll;
+  overflow-x: hidden;
 }
 
 .UserAvatar {
@@ -393,125 +396,125 @@ Post-item-title {
 /* USER HEADER */
 
 .ProfileMeta-stats {
-    font-size: 14px;
-    font-weight: 600;
-    text-transform: uppercase;
-    margin-top: 8px;
-    cursor: default;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-top: 8px;
+  cursor: default;
 }
 
 .ProfileCover-header {
-    height: 258px;
-    /* padding: 52px 0 0; */
-    padding: 52px 16px 0;
-    width: 100%;
-    margin: 0 auto;
-    min-width: 450px;
-    z-index: 1;
+  height: 258px;
+  /* padding: 52px 0 0; */
+  padding: 52px 16px 0;
+  width: 100%;
+  margin: 0 auto;
+  min-width: 450px;
+  z-index: 1;
 }
 
 .ProfileMeta {
-    display: flex;
-    justify-content: flex-start;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .ProfileMeta .UserAvatar {
-    position: relative;
-    height: 128px;
-    width: 128px;
-    overflow: hidden;
-    flex-grow: 0;
-    flex-shrink: 0;
+  position: relative;
+  height: 128px;
+  width: 128px;
+  overflow: hidden;
+  flex-grow: 0;
+  flex-shrink: 0;
 }
 
 .UserAvatar {
-    border-radius: 50%;
-    background: grey;
-    background-image: none;
-    background-size: cover;
+  border-radius: 50%;
+  background: grey;
+  background-image: none;
+  background-size: cover;
 }
 
 .ProfileMeta-data {
-    margin: auto 24px;
-    color: #f2f2f2;
-    overflow: hidden;
+  margin: auto 24px;
+  color: #f2f2f2;
+  overflow: hidden;
 }
 
 .ProfileMeta-user {
-    font-size: 44px;
-    font-family: Proxima Nova ExtraBold,Helvetica Neue,Helvetica,Arial,sans-serif;
-    text-overflow: ellipsis;
-    overflow: hidden;
+  font-size: 44px;
+  font-family: Proxima Nova ExtraBold,Helvetica Neue,Helvetica,Arial,sans-serif;
+  text-overflow: ellipsis;
+  overflow: hidden;
 }
 
 .ProfileMeta-divider {
-    margin: auto 15px;
+  margin: auto 15px;
 }
 
 
 /* TAG HEADER */
 
 .Cover-item-count {
-    text-transform: uppercase;
+  text-transform: uppercase;
 }
 
 .Cover-stats {
-    font-size: 16px;
-    margin: 13px 0 20px;
+  font-size: 16px;
+  margin: 13px 0 20px;
 }
 
 .Cover-description {
-    margin: 0 0 10px;
-    font-size: 22px;
-    max-width: 390px;
+  margin: 0 0 10px;
+  font-size: 22px;
+  max-width: 390px;
 }
 
 Cover-description, .Cover-name, .Cover-stats {
-    text-align: center;
+  text-align: center;
 }
 
 .Cover-name {
-    font-size: 52px;
-    color: #fff;
-    margin: 0;
-    font-family: Proxima Nova ExtraBold,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 52px;
+  color: #fff;
+  margin: 0;
+  font-family: Proxima Nova ExtraBold,Helvetica Neue,Helvetica,Arial,sans-serif;
 }
 
 .Cover-metadata {
-    position: relative;
-    margin: 0 auto;
-    text-align: center;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    flex-wrap: nowrap;
-    justify-content: center;
-    align-content: stretch;
-    align-items: center;
-    z-index: 0;
+  position: relative;
+  margin: 0 auto;
+  text-align: center;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  justify-content: center;
+  align-content: stretch;
+  align-items: center;
+  z-index: 0;
 }
 
 .NewCover-change-sort-wrapper .Dropdown, .NewCover .Cover-metadata {
-    margin: auto;
+  margin: auto;
 }
 
 .NewCover {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
-    background-size: cover;
-    background-position: 50%;
-    background-color: #474a51;
-    padding-bottom: 76px;
-    opacity: 1;
-    transition: opacity .5s,box-shadow .4s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  background-size: cover;
+  background-position: 50%;
+  background-color: #474a51;
+  padding-bottom: 76px;
+  opacity: 1;
+  transition: opacity .5s,box-shadow .4s;
 }
 
 .App-cover {
-    width: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
 }

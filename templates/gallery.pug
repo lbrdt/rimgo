@@ -52,38 +52,42 @@ html
   head
     include includes/head.pug
   body
-    div(class='Gallery-Content')
-      div(class='Gallery-Header')
-        div(class='Gallery-Title')
-          span #{title}
-        div(class='Gallery-Byline')
-          if account_id > 0
-            a(class='author-link' title='View profile of '+account.username, href='/user/'+account.username)
-              span(class='UserAvatar Avatar', title=account.username, style='background-image: url("' + util.proxyURL(account.avatar_url) + '");')
-          div(class='Info-Wrapper')
-            if account_id > 0
-              div(class='Info')
-                a(class='author-name' title='View profile of '+account.username, href='/user/'+account.username) #{account.username}
-            div(class='Meta')
-              span #{view_count} Views
-              span(class='delimiter') •
-              span(title=created_at) #{created_at}
-      div(class='Gallery-ContentWrapper')
-        each m in media
-          +media(m)
-      if tags
-        div(class='Gallery-Content--tags')
-          each tag in tags
-            a(class='TagPill'
-              style='background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) repeat scroll 0% 0%, rgba(0, 0, 0, 0) url("/' + tag.background_id + '_d.jpg?maxwidth=200&fidelity=grand") repeat scroll 0% 0%;'
-              href='/t/'+tag.tag) #{tag.tag}
-    if comments != null
-      div(class='CommentsList')
-        div(class='CommentsList-headline')
-          div(class='CommentsList-headline--counter')
-            span #{comments.length} Comments
-        div
-          div(class='CommentsList-comments')
-            div(class='CommentsList-comments--container')
-              each comment in comments
-                +commentbox(comment)
+    include includes/header.pug
+    .App
+      .Gallery-MainContainer
+        .Gallery-contentWrapper
+          div(class='Gallery-Content')
+            div(class='Gallery-Header')
+              div(class='Gallery-Title')
+                span #{title}
+              div(class='Gallery-Byline')
+                if account_id > 0
+                  a(class='author-link' title='View profile of '+account.username, href='/user/'+account.username)
+                    span(class='UserAvatar Avatar', title=account.username, style='background-image: url("' + util.proxyURL(account.avatar_url) + '");')
+                div(class='Info-Wrapper')
+                  if account_id > 0
+                    div(class='Info')
+                      a(class='author-name' title='View profile of '+account.username, href='/user/'+account.username) #{account.username}
+                  div(class='Meta')
+                    span #{view_count} Views
+                    span(class='delimiter') •
+                    span(title=created_at) #{created_at}
+            div(class='Gallery-ContentWrapper')
+              each m in media
+                +media(m)
+            if tags
+              div(class='Gallery-Content--tags')
+                each tag in tags
+                  a(class='TagPill'
+                    style='background: linear-gradient(0deg, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)) repeat scroll 0% 0%, rgba(0, 0, 0, 0) url("/' + tag.background_id + '_d.jpg?maxwidth=200&fidelity=grand") repeat scroll 0% 0%;'
+                    href='/t/'+tag.tag) #{tag.tag}
+          if comments != null
+            div(class='CommentsList')
+              div(class='CommentsList-headline')
+                div(class='CommentsList-headline--counter')
+                  span #{comments.length} Comments
+              div
+                div(class='CommentsList-comments')
+                  div(class='CommentsList-comments--container')
+                    each comment in comments
+                      +commentbox(comment)
