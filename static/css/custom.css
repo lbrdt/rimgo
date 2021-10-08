@@ -55,9 +55,14 @@ body {
   display: inline-block;
   top: 0;
 }
+
 .Navbar {
   width: 100%;
   z-index: 1000;
   text-align: center;
   margin: 0 auto;
+}
+
+.NewCover {
+  padding-top: 100px;
 }

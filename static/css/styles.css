@@ -506,7 +506,7 @@ Cover-description, .Cover-name, .Cover-stats {
   background-size: cover;
   background-position: 50%;
   background-color: #474a51;
-  padding-bottom: 76px;
+  /* padding-bottom: 76px; */
   opacity: 1;
   transition: opacity .5s,box-shadow .4s;
 }
