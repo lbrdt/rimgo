@@ -275,6 +275,17 @@ a {
   margin-right: 10px;
 }
 
+.Gallery-ContentWrapper .Gallery-Content--descr {
+  margin-bottom: 24px;
+  padding: 0 24px;
+  font-family: Proxima Nova Regular,Helvetica Neue,Helvetica,Arial,sans-serif;
+  font-size: 16px;
+  line-height: 150%;
+  color: hsla(0,0%,100%,.9);
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
 .CommentsList-headline {
   background: repeat-x 0 100% url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='1' height='1'%3E%3Cpath fill='%23585D6A' d='M0 0h1v.5H0z'/%3E%3C/svg%3E");
   display: flex;
@@ -358,7 +369,7 @@ a {
   color: #b4b9c2;
 }
 
-Post-item-title {
+.Post-item-title {
   font-weight: 600;
   line-height: 1.14;
   font-size: 14px;

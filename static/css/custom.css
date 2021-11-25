@@ -3,6 +3,10 @@ img.album-img {
   max-height: 100%;
 }
 
+.imageContainer img {
+  max-width: 100%;
+}
+
 .TagsCover {
   top: 0px;
   min-height: 351px;
@@ -65,4 +69,11 @@ body {
 
 .NewCover {
   padding-top: 100px;
+}
+
+.Gallery-Content--title {
+  font-family: Proxima Nova Regular,Helvetica Neue,Helvetica,Arial,sans-serif;
+  color: #b4b9c2;
+  font-size: 12px;
+  line-height: 12px;
 }

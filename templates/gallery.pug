@@ -46,8 +46,18 @@ mixin media(m)
     else
       div(class='Gallery-Content--media')
         div(class='imageContainer')
-          img(src=util.proxyURL(m.url))
-
+          img(src=util.proxyURL(m.url) title=m.name+' ['+m.metadata.created_at+']')
+      div(class='Gallery-Content--descr')
+        div(class='Gallery-Content--title')
+          span #{m.metadata.title || m.name} 
+          span(class='delimiter') •
+          span  #{m.created_at}
+          if m.updated_at
+            span(class='delimiter') •
+            span  #{m.updated_at}
+        if m.metadata.description
+          span(class='Linkify') #{m.metadata.description}
+            
 html
   head
     include includes/head.pug
