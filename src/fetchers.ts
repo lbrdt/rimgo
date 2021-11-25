@@ -31,22 +31,31 @@ const agent = {
     : httpsGlobalAgent
 };
 
+const get = async (url: string): Promise<Response<string>> => {
+  try {
+    return got(url, { agent });
+  }
+  catch (err) {
+    console.error(`Error getting ${url}`);
+    throw err;
+  }
+};
+
 export const fetchAlbumURL = async (albumID: string): Promise<string> => {
   // https://imgur.com/a/DfEsrAB
-  const response = await got(`https://imgur.com/a/${albumID}`, { agent });
+  const response = await get(`https://imgur.com/a/${albumID}`);
   const $ = cheerio.load(response.body);
   const url = $('head meta[property="og:image"]').attr('content')?.replace(/\/\?.*$/, '');
   if (!url) {
-    throw new Error('Could not read image url');
+    throw new Error(`Could not read image url for album ${albumID}`);
   }
   return url;
 };
 
-export const fetchAlbum = async (albumID: string): Promise<Comment[]> => {
+export const fetchAlbum = async (albumID: string): Promise<Media[]> => {
   // https://api.imgur.com/post/v1/albums/zk7mdKH?client_id=${CLIENT_ID}&include=media%2Caccount
-  const response = await got(
+  const response = await get(
     `https://api.imgur.com/post/v1/albums/${albumID}?client_id=${CONFIG.imgur_client_id}&include=media%2Caccount`,
-    { agent }
   );
   return JSON.parse(response.body);
 }
@@ -54,9 +63,8 @@ export const fetchAlbum = async (albumID: string): Promise<Comment[]> => {
 export const fetchComments = async (galleryID: string): Promise<Comment[]> => {
   /* eslint-disable max-len */
   // https://api.imgur.com/comment/v1/comments?client_id=${CLIENT_ID}%5Bpost%5D=eq%3Ag1bk7CB&include=account%2Cadconfig&per_page=30&sort=best
-  const response = await got(
+  const response = await get(
     `https://api.imgur.com/comment/v1/comments?client_id=${CONFIG.imgur_client_id}&filter%5Bpost%5D=eq%3A${galleryID}&include=account%2Cadconfig&per_page=30&sort=best`,
-    { agent }
   );
   return JSON.parse(response.body).data;
   /* eslint-enable max-len */
@@ -64,9 +72,8 @@ export const fetchComments = async (galleryID: string): Promise<Comment[]> => {
 
 export const fetchUserInfo = async (userID: string): Promise<UserResult> => {
   // https://api.imgur.com/account/v1/accounts/hughjaniss?client_id=${CLIENT_ID}
-  const response = await got(
+  const response = await get(
     `https://api.imgur.com/account/v1/accounts/${userID.toLowerCase()}?client_id=${CONFIG.imgur_client_id}&include=`,
-    { agent }
   );
   return JSON.parse(response.body);
 }
@@ -74,9 +81,8 @@ export const fetchUserInfo = async (userID: string): Promise<UserResult> => {
 export const fetchUserPosts = async (userID: string, sort: Sorting = 'newest'): Promise<Post[]> => {
   /* eslint-disable max-len */
   // https://api.imgur.com/3/account/mombotnumber5/submissions/0/newest?album_previews=1&client_id=${CLIENT_ID}
-  const response = await got(
+  const response = await get(
     `https://api.imgur.com/3/account/${userID.toLowerCase()}/submissions/0/${sort}?album_previews=1&client_id=${CONFIG.imgur_client_id}`,
-    { agent }
   );
   return JSON.parse(response.body).data;
   /* eslint-enable max-len */
@@ -85,9 +91,8 @@ export const fetchUserPosts = async (userID: string, sort: Sorting = 'newest'): 
 export const fetchTagPosts = async (tagID: string, sort: Sorting = 'viral'): Promise<TagResult> => {
   /* eslint-disable max-len */
   // https://api.imgur.com/3/account/mombotnumber5/submissions/0/newest?album_previews=1&client_id=${CLIENT_ID}
-  const response = await got(
+  const response = await get(
     `https://api.imgur.com/3/gallery/t/${tagID.toLowerCase()}/${sort}/week/0?client_id=${CONFIG.imgur_client_id}`,
-    { agent }
   );
   return JSON.parse(response.body).data;
   /* eslint-enable max-len */
@@ -95,7 +100,7 @@ export const fetchTagPosts = async (tagID: string, sort: Sorting = 'viral'): Pro
 
 export const fetchGallery = async (galleryID: string): Promise<Gallery> => {
   // https://imgur.com/gallery/g1bk7CB
-  const response = await got(`https://imgur.com/gallery/${galleryID}`, { agent });
+  const response = await get(`https://imgur.com/gallery/${galleryID}`);
   const $ = cheerio.load(response.body);
   const postDataScript = $('head script:first-of-type').html();
   if (!postDataScript) {
@@ -110,4 +115,4 @@ export const fetchGallery = async (galleryID: string): Promise<Gallery> => {
 };
 
 export const fetchMedia = async (filename: string): Promise<Response<string>> =>
-  await got(`https://i.imgur.com/${filename}`, { agent });
+  await get(`https://i.imgur.com/${filename}`);
