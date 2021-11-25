@@ -7,4 +7,5 @@ export default {
   imgur_client_id: process.env.RIMGU_IMGUR_CLIENT_ID || null,
   use_api: process.env.RIMGU_USE_API && process.env.RIMGU_USE_API !== 'false',
   page_title: process.env.RIMGU_PAGE_TITLE || 'rimgu',
+  debug: process.env.RIMGU_DEBUG && process.env.RIMGU_DEBUG !== 'false',
 };
