@@ -1,11 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   {{> partials/head }}
+  <link rel="stylesheet" href="/static/css/album.css" />
 </head>
+
 <body>
-  {{#each album.Media}}
-  <img src="{{this}}" loading="lazy">
-  {{/each}}
+  {{> partials/header }}
+
+  <main>
+    {{#each album.Media}}
+    <img src="{{this}}" loading="lazy">
+    {{/each}}
+  </main>
 </body>
+
 </html>
