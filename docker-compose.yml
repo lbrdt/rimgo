@@ -2,6 +2,7 @@ version: '3'
 
 services:
   rimgo:
+    #image: quay.io/pussthecatorg/rimgo # Uncomment to use image
     build: .
     ports:
       - 3000:3000
