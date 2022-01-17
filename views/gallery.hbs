@@ -3,17 +3,52 @@
 
 <head>
   {{> partials/head }}
+  
+  <link rel="stylesheet" href="/static/fonts/Material-Icons-Outlined.css" />
   <link rel="stylesheet" href="/static/css/album.css" />
+  
 </head>
 
 <body>
   {{> partials/header }}
 
   <main>
+    <h1>{{album.Title}}</h1>
+
+    <div class="imageMeta__wrapper">
+      <div class="imageMeta">
+        <p><span class="material-icons-outlined" title="Views">visibility</span> {{album.Views}}</p>
+        {{#unless isAlbum}}
+        <p><span class="material-icons-outlined" title="Likes">thumb_up</span> {{album.Upvotes}}</p>
+        <p><span class="material-icons-outlined" title="Dislilkes">thumb_down</span> {{album.Downvotes}}</p>
+        {{/unless}}
+      </div>
+      <!--<div class="videoDesc__channel">
+        <a href="{{claim.Channel.RelUrl}}">
+          {{#if claim.Channel.Thumbnail}}
+          <img src="{{claim.Channel.Thumbnail}}&w=56&h=56" class="pfp" width="56" height="56" loading="lazy" />
+          {{/if}}
+        </a>
+        <a href="{{claim.Channel.RelUrl}}">
+          <p>
+            <b>{{claim.Channel.Title}}</b>
+          </p>
+        </a>
+      </div>-->
+    </div>
+
     {{#each album.Media}}
-    <img src="{{this}}" loading="lazy">
+    {{#if this.Title}}
+    <h3>{{this.Title}}</h3>
+    {{/if}}
+    {{#if this.Description}}
+    <p>{{this.Description}}</p>
+    {{/if}}
+    <img src="{{this.Url}}" loading="lazy">
     {{/each}}
   </main>
+
+  {{> partials/footer }}
 </body>
 
 </html>

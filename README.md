@@ -27,15 +27,13 @@ Features:
 
 This is currently very early stage software. Some things left to implement (contributions welcome!):
 
-- [ ] Streaming (currently media is downloaded in full in rimgu before it's returned)
+- [x] Streaming (currently media is downloaded in full in rimgu before it's returned)
 - [ ] Localization/internationalization
-- [ ] Pretty CSS styling (responsive?)
-- [ ] Automatically fetch / rotate / renew client ID
+- [x] Pretty CSS styling (responsive?)
 - [ ] Support for other popular image sites than only imgur
 - [ ] Filtering and exploration on user/tags pages
 - [ ] Responsive scaling of videos on user/tags pages
-- [ ] Prometheus metrics
-- [ ] Logo
+- [x] Logo
 - [ ] SOCKS5 proxy support
 
 Things that are *currently* considered out of scope:

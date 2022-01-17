@@ -16,5 +16,6 @@ func HandleAlbum(c *fiber.Ctx) error {
 
 	return c.Render("gallery", fiber.Map{
 		"album": album,
+		"isAlbum": true,
 	})
 }

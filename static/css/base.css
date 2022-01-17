@@ -1,11 +1,39 @@
+a {
+  text-decoration: none;
+}
+
 body {
+  background-color: black;
+  color: white;
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif; 
 }
 
-main {
-  margin: 0 18vw;
+nav {
+  display: flex;
+  align-items: center;
 }
 
-img {
-  max-width: 100%;
+.logo {
+  filter: invert(1) hue-rotate(180deg);
+}
+
+main {
+  margin: 0 24vw;
+}
+
+footer {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 10px;
+}
+
+@media only screen and (max-width: 812px) {
+  main {
+    margin: 0;
+  }
+  footer {
+    flex-direction: column;
+    text-align: center;
+  }
 }

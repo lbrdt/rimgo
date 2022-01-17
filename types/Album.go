@@ -8,5 +8,5 @@ type Album struct {
 	Downvotes int64
 	CreatedAt string
 	UpdatedAt string
-	Media     []string
+	Media     []Media
 }
