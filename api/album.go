@@ -6,7 +6,7 @@ import (
 	"strings"
 	"time"
 
-	"codeberg.org/video-prize-ranch/go-rimgu/types"
+	"codeberg.org/video-prize-ranch/rimgo/types"
 	"github.com/spf13/viper"
 	"github.com/tidwall/gjson"
 )
@@ -33,11 +33,11 @@ func FetchAlbum(albumID string) (types.Album, error) {
 			url = strings.ReplaceAll(url, "https://i.imgur.com", "/media")
 
 			media = append(media, types.Media{
-				Id: value.Get("id").String(),
-				Name: value.Get("name").String(),
-				Title: value.Get("metadata.title").String(),
+				Id:          value.Get("id").String(),
+				Name:        value.Get("name").String(),
+				Title:       value.Get("metadata.title").String(),
 				Description: value.Get("metadata.description").String(),
-				Url: url,
+				Url:         url,
 			})
 
 			return true
@@ -50,10 +50,10 @@ func FetchAlbum(albumID string) (types.Album, error) {
 	}
 
 	return types.Album{
-		Id: data.Get("id").String(),
-    Title: data.Get("title").String(),
-    Views: data.Get("view_count").Int(),
-    CreatedAt: createdAt.Format("January 2, 2006 3:04 PM"),
-		Media: media,
+		Id:        data.Get("id").String(),
+		Title:     data.Get("title").String(),
+		Views:     data.Get("view_count").Int(),
+		CreatedAt: createdAt.Format("January 2, 2006 3:04 PM"),
+		Media:     media,
 	}, nil
 }

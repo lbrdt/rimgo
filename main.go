@@ -4,9 +4,9 @@ import (
 	"log"
 	"net/http"
 
-	"codeberg.org/video-prize-ranch/go-rimgu/pages"
-	"codeberg.org/video-prize-ranch/go-rimgu/static"
-	"codeberg.org/video-prize-ranch/go-rimgu/views"
+	"codeberg.org/video-prize-ranch/rimgo/pages"
+	"codeberg.org/video-prize-ranch/rimgo/static"
+	"codeberg.org/video-prize-ranch/rimgo/views"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
 	"github.com/gofiber/template/handlebars"
@@ -30,12 +30,12 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	
+
 	engine := handlebars.NewFileSystem(http.FS(views.GetFiles()), ".hbs")
 	app := fiber.New(fiber.Config{
-		Views: engine,
-		Prefork: viper.GetBool("FIBER_PREFORK"),
-		UnescapePath: true,
+		Views:             engine,
+		Prefork:           viper.GetBool("FIBER_PREFORK"),
+		UnescapePath:      true,
 		StreamRequestBody: true,
 	})
 

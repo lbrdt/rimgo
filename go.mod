@@ -1,4 +1,4 @@
-module codeberg.org/video-prize-ranch/go-rimgu
+module codeberg.org/video-prize-ranch/rimgo
 
 go 1.17
 

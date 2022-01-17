@@ -1,9 +1,8 @@
 package pages
 
 import (
-	"codeberg.org/video-prize-ranch/go-rimgu/api"
+	"codeberg.org/video-prize-ranch/rimgo/api"
 	"github.com/gofiber/fiber/v2"
-
 )
 
 func HandleAlbum(c *fiber.Ctx) error {
