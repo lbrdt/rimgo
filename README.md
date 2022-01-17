@@ -1,3 +1,5 @@
+<img src="https://codeberg.org/video-prize-ranch/rimgo/raw/branch/main/static/img/rimgo.svg" width="96" height="96" />
+
 # rimgo
 An alternative frontend for Imgur. Based on [rimgu](https://codeberg.org/3np/rimgu) and rewritten in Go.
 
