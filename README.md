@@ -12,7 +12,7 @@ It's read-only and works without JavaScript. Images and albums can be viewed wit
 ## Features
 
 - [x] URL-compatible with i.imgur.com - just replace the domain in the URL
-- [x] Images and videos (gifv, mp4) returned directly
+- [x] Images and videos (gifv, mp4)
 - [ ] Galleries with comments
 - [x] Albums
 - [ ] User page
@@ -23,16 +23,16 @@ This is currently very early stage software. Some things left to implement (cont
 - [x] Streaming (currently media is downloaded in full in rimgu before it's returned)
 - [ ] Localization/internationalization
 - [x] Pretty CSS styling (responsive?)
-- [ ] Support for other popular image sites than only imgur
+- [ ] Support for other popular image sites
 - [ ] Filtering and exploration on user/tags pages
 - [ ] Responsive scaling of videos on user/tags pages
 - [x] Logo
 
 Things that are considered out of scope:
 
-* Uploading/commenting/voting/etc - rimgu is read-only for now.
+* Uploading, commenting, voting, etc - rimgo is read-only.
 * Authentication, serving HTTPS, rate limiting, etc - Use a reverse proxy or load balancer like Caddy, Traefik, or NGINX.
-* Anything requiring client-side JS or client-side directly interacting with upstream servers
+* Anything requiring JavaScript or the client directly interacting with upstream servers.
 
 ## Instances
 
@@ -97,4 +97,4 @@ rimgo can be configured using environment variables or a config file.
 
 PRs are welcome!
 
-This software is released under the AGPL 3.0 license. In short, this means that if you make any modifications to the code and then publish the result (e.g. by hosting the result on a webserver), you must publicly distribute your changes and declare that they also use AGPL 3.0.
+This software is released under the AGPL 3.0 license. In short, this means that if you make any modifications to the code and then publish the result (e.g. by hosting the result on a web server), you must publicly distribute your changes and declare that they also use AGPL 3.0.
