@@ -43,42 +43,52 @@ Open an issue to have your instance listed here!
 | [i.bcow.xyz](https://i.bcow.xyz/)                                                                                                        | 🇨🇦 CA   |            |
 | [l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion](http://l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion/) |         |            |
 
-## Building
+## Install
+Librarian can run on any platform Go compiles on.
 
-### Locally
+### Docker
+Install Docker and docker-compose, then clone this repository.
+```
+git clone https://codeberg.org/video-prize-ranch/rimgo
+cd rimgo
+```
 
-Dependencies:
+Edit the `docker-compose.yml` file using your favorite text editor.
+```
+nvim docker-compose.yml
+```
 
+You can now run rimgo.
+```
+sudo docker-compose up -d
+```
+
+### Build from source
+
+#### Requirements
 * Go v1.16 or later
 
+Clone the repository and `cd` into it.
+```
+git clone https://codeberg.org/video-prize-ranch/rimgo
+cd rimgo
+```
+
+Build rimgo.
 ```
 go build
 ```
 
-### Docker
+Edit the config file using your preferred editor.
 ```
-sudo docker build -t rimgo:latest .
-```
-
-## Running
-
-### Locally
-
-```
-go run main.go
+nvim config.yml
 ```
 
-### Docker
-
-Without docker-compose:
+You can now run rimgo.
 ```
-sudo docker run -p 8080:8080 -e -it RIMGU_ADDRESS=0.0.0.0 -e RIMGU_PORT=8080 rimgu:latest
+./rimgo
 ```
 
-With docker-compose:
-```
-sudo docker-compose up -d
-```
 
 ## Configuration
 
