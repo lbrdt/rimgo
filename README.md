@@ -4,7 +4,7 @@
 An alternative frontend for Imgur. Based on [rimgu](https://codeberg.org/3np/rimgu) and rewritten in Go.
 
 <a href="https://www.gnu.org/licenses/agpl-3.0.en.html">
-  <img alt="License: AGPLv3+" src="https://shields.io/badge/License-AGPL%20v3+-blue.svg">
+  <img alt="License: AGPLv3" src="https://shields.io/badge/License-AGPL%20v3-blue.svg">
 </a>
 
 It's read-only and works without JavaScript. Images and albums can be viewed without wasting resources from downloading and running tracking scripts. No sign-up nags.
