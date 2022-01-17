@@ -1,10 +1,11 @@
-# rimgu: image host alternative frontend
+# rimgo
+An alternative frontend for Imgur. Based on [rimgu](https://codeberg.org/3np/rimgu) and rewritten in Go.
 
-## rimgu is an alternative frontend / proxy for imgur
+<a href="https://www.gnu.org/licenses/agpl-3.0.en.html">
+  <img alt="License: AGPLv3+" src="https://shields.io/badge/License-AGPL%20v3+-blue.svg">
+</a>
 
-It's read-only and works without browser JavaScript. Images and albums can be viewed without wasting resources and anyonymity from downloading and running tracking scripts. No sign-up nags.
-
-It's lightweight and easy to configure.
+It's read-only and works without JavaScript. Images and albums can be viewed without wasting resources from downloading and running tracking scripts. No sign-up nags.
 
 Inspired by and (soon) integratable with:
 
@@ -15,15 +16,14 @@ Inspired by and (soon) integratable with:
 * [bibliogram](https://sr.ht/~cadence/bibliogram/)
 
 
-Features:
+## Features
 
 - [x] URL-compatible with i.imgur.com - just replace the domain in the URL
 - [x] Images and videos (gifv, mp4) returned directly
-- [x] Galleries with comments
+- [ ] Galleries with comments
 - [x] Albums
-- [x] User page
-- [x] Tag page
-- [x] Supports http(s) forward proxy
+- [ ] User page
+- [ ] Tag page
 
 This is currently very early stage software. Some things left to implement (contributions welcome!):
 
@@ -34,13 +34,21 @@ This is currently very early stage software. Some things left to implement (cont
 - [ ] Filtering and exploration on user/tags pages
 - [ ] Responsive scaling of videos on user/tags pages
 - [x] Logo
-- [ ] SOCKS5 proxy support
 
-Things that are *currently* considered out of scope:
+Things that are considered out of scope:
 
 * Uploading/commenting/voting/etc - rimgu is read-only for now.
-* Caching, authentication, serving HTTPS, rate limiting etc - Just use a proxy or load balancer like squid/haproxy/envoy/nginx/traefik/caddy.
+* Authentication, serving HTTPS, rate limiting, etc - Use a reverse proxy or load balancer like Caddy, Traefik, or NGINX.
 * Anything requiring client-side JS or client-side directly interacting with upstream servers
+
+## Instances
+
+Open an issue to have your instance listed here!
+
+| Website                                                                                                                                  | Country | Cloudflare |
+|------------------------------------------------------------------------------------------------------------------------------------------|---------|------------|
+| [i.bcow.xyz](https://i.bcow.xyz/)                                                                                                        | 🇨🇦 CA   |            |
+| [l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion](http://l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion/) |         |            |
 
 ## Building
 
@@ -48,15 +56,15 @@ Things that are *currently* considered out of scope:
 
 Dependencies:
 
-* node.js >= v16 (earlier most likely works fine)
+* Go v1.16 or later
 
 ```
-$ npm install && npm run build
+go build
 ```
 
 ### Docker
 ```
-$ docker build -t rimgu:latest .
+sudo docker build -t rimgo:latest .
 ```
 
 ## Running
@@ -64,51 +72,36 @@ $ docker build -t rimgu:latest .
 ### Locally
 
 ```
-$ node dist/index.js
+go run main.go
 ```
 
 ### Docker
+
+Without docker-compose:
 ```
-$ docker run -p 8080:8080 -e -it RIMGU_ADDRESS=0.0.0.0 -e RIMGU_PORT=8080 rimgu:latest
+sudo docker run -p 8080:8080 -e -it RIMGU_ADDRESS=0.0.0.0 -e RIMGU_PORT=8080 rimgu:latest
 ```
 
-If you decide to run a public instance, consider opening an issue to have it listed here :)
+With docker-compose:
+```
+sudo docker-compose up -d
+```
 
 ## Configuration
 
-Rimgu is configured via environment variables. See available variables in [src/config.ts](./src/config.ts).
+rimgo can be configured using environment variables or a config file.
 
-### API and client ID
+### Environment variables
 
-Media and galleries can be scraped without authorization through the public web interface.
-Some imgur functionality (comments, full albums) requires a provisioned client ID to authenticate requests.
-
-You can get a client ID by opening https://imgur.com in a web browser and looking for requests to `https://api.imgur.com/...?client_id=1234567deadbeef` under "Network" in the developer console.
-
-__To run without API/key__: `RIMGU_USE_API=false`
-
-__To run with API/key__: `RIMGU_USE_API=true RIMGU_IMGUR_CLIENT_ID=1234567deadbeef`
-
-This key may be used to track you and could be banned when overused. Keep this in mind before exposing a public instance with a client key associated with your personal imgur account. Consider any ToS you may have signed before associating a personal imgur account with a public instance.
-
+| Name                  | Default         |
+|-----------------------|-----------------|
+| RIMGU_PORT            | 3000            |
+| RIMGU_HOST            | localhost       |
+| RIMGU_ADDRESS         | 0.0.0.0         |
+| RIMGU_IMGUR_CLIENT_ID | 546c25a59c58ad7 |
 
 ## Contributing
 
-PRs are welcome! Before submitting a PR, please make sure linting passes successfully:
-
-```
-$ npm run lint
-```
+PRs are welcome!
 
 This software is released under the AGPL 3.0 license. In short, this means that if you make any modifications to the code and then publish the result (e.g. by hosting the result on a webserver), you must publicly distribute your changes and declare that they also use AGPL 3.0.
-
-You are also requested to not remove attribution and donation information from forks and publications.
-
-## Support
-
-Donations are welcome and will contribute to development, maintenance and a future public hosted instance.
-
-* XMR: `8C58RTj15HbWRhjqhdk9mmg5ro1GoTXH3Z5cR7nPATM3QvudQ25yoXA7rqPGsuuxK6YWV2zrvhcXjPhip2nEtUhmDh9goqT`
-* BTC: `bc1qwzdqywdezr5afyrtqenj7yz3fpz2qzpx7lca8j`
-* ETH: `0x3FE87870e80a56c02D98a4E3CE946318b917d719`
-* BCH: `qzxxuatxvfz5wjdyckrlc9hclvfvmfrc6qr9nzzaue`
