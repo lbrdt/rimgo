@@ -30,7 +30,7 @@ func FetchAlbum(albumID string) (types.Album, error) {
 	data.Get("media").ForEach(
 		func(key gjson.Result, value gjson.Result) bool {
 			url := value.Get("url").String()
-			url = strings.ReplaceAll(url, "https://i.imgur.com", "/media")
+			url = strings.ReplaceAll(url, "https://i.imgur.com", "")
 
 			media = append(media, types.Media{
 				Id:          value.Get("id").String(),
