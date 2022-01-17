@@ -9,15 +9,6 @@ An alternative frontend for Imgur. Based on [rimgu](https://codeberg.org/3np/rim
 
 It's read-only and works without JavaScript. Images and albums can be viewed without wasting resources from downloading and running tracking scripts. No sign-up nags.
 
-Inspired by and (soon) integratable with:
-
-* [searx](https://github.com/searx/searx)
-* [teddit](https://codeberg.org/teddit/teddit) ([integration](https://codeberg.org/teddit/teddit/pulls/249))
-* [Privacy Redirect](https://github.com/SimonBrazell/privacy-redirect) ([integration](https://github.com/SimonBrazell/privacy-redirect/pull/303))
-* [nitter](https://github.com/zedeus/nitter)
-* [bibliogram](https://sr.ht/~cadence/bibliogram/)
-
-
 ## Features
 
 - [x] URL-compatible with i.imgur.com - just replace the domain in the URL
