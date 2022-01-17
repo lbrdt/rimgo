@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  rimgo:
+    build: .
+    ports:
+      - 3000:3000
+    volumes:
+      - ./config.yml:/app/config.yml
+    restart: unless-stopped

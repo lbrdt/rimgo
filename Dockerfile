@@ -1,19 +1,16 @@
-FROM node:16-slim as builder
+FROM golang:alpine AS build
 
-RUN mkdir /app
-COPY package.json /app/
-COPY package-lock.json /app/
-WORKDIR /app
-RUN npm ci
-COPY . /app
-RUN npm run build
+WORKDIR /src
+RUN apk --no-cache add git
+RUN git clone https://codeberg.org/video-prize-ranch/rimgo .
 
-FROM node:16-slim
+RUN go build
 
-COPY --from=builder /app/dist/ /app/
+FROM alpine:latest as bin
 
 WORKDIR /app
+COPY --from=build /src/rimgo .
 
-RUN npm install --production
+EXPOSE 3000
 
-CMD ["/usr/local/bin/node", "index.js"]
+CMD ["/app/rimgo"]
