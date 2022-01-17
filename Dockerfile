@@ -9,8 +9,8 @@ RUN go build
 FROM alpine:latest as bin
 
 WORKDIR /app
-COPY --from=build /src/go-rimgu .
+COPY --from=build /src/rimgo .
 
 EXPOSE 3000
 
-CMD ["/app/go-rimgu"]
+CMD ["/app/rimgo"]
