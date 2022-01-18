@@ -43,6 +43,7 @@ func main() {
 		Root: http.FS(static.GetFiles()),
 	}))
 
+	app.Get("/", pages.FrontpageHandler)
 	app.Get("/:baseName.:extension", pages.HandleMedia)
 	app.Get("/a/:albumID", pages.HandleAlbum)
 	app.Get("/t/:tagID", pages.HandleAlbum)

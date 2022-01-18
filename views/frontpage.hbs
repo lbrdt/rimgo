@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  {{> partials/head }}
+  
+  <link rel="stylesheet" href="/static/css/frontpage.css" />
+
+</head>
+
+<body>
+  {{> partials/header }}
+
+  <main>
+    <p>An alternative frontend for Imgur. Based on <a href="https://codeberg.org/3np/rimgu">rimgu</a> and rewritten in Go.</p>
+
+    <p>It's read-only and works without JavaScript. Images and albums can be viewed without wasting resources from downloading and running tracking scripts. No sign-up nags.</p>
+
+    <h3>Try it!</h3>
+
+    <a href="/a/H8M4rcp">Album</a>
+
+    <h2>Features</h2>
+
+    <ul>
+      <li>URL-compatible with i.imgur.com - just replace the domain in the URL</li>
+      <li>Images and videos (gifv, mp4)</li>
+      <li>Albums</li>
+      <li>Streaming</li>
+      <li>Pretty CSS styling (responsive?)</li>
+      <li>Logo</li>
+    </ul>
+
+    <h2>Usage</h2>
+    
+    <p>Just replace imgur.com with the domain of this instance! You can setup automatic redirects using <a href="https://github.com/einaregilsson/Redirector">Redirector</a>.</p>
+
+    <h3>Redirector configuration</h3>
+    
+    <ul>
+      <li>Description: Imgur -> rimgo</li>
+      <li>Example URL: https://imgur.com/a/H8M4rcp</li>
+      <li>Include pattern: <code>^https?://(i|).?imgur.com(/.*)?$</code></li>
+      <li>Redirect to: <code>https://[INSTANCE DOMAIN]$2</code></li>
+      <li>Pattern type: Regular Expression</li>
+    </ul>
+
+  </main>
+
+  {{> partials/footer }}
+</body>
+
+</html>
