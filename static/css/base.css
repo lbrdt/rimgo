@@ -3,13 +3,14 @@ a {
   text-decoration: none;
 }
 
-p {
-  font-size: 18px;
+a > h2 {
+  color: white;
 }
 
 body {
   background-color: black;
   color: white;
+  font-size: 18px;
   font-family: -apple-system, BlinkMacSystemFont, avenir next, avenir, segoe ui, helvetica neue, helvetica, Ubuntu, roboto, noto, arial, sans-serif; 
 }
 
