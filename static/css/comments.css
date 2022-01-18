@@ -60,3 +60,9 @@
   gap: 6px;
   align-items: center;
 }
+
+.comment__user__username {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
