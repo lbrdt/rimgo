@@ -40,7 +40,7 @@ Open an issue to have your instance listed here!
 
 | Website                                                                                                                                  | Country | Cloudflare |
 |------------------------------------------------------------------------------------------------------------------------------------------|---------|------------|
-| [i.bcow.xyz](https://i.bcow.xyz/)                                                                                                        | 🇨🇦 CA   |            |
+| [i.bcow.xyz](https://i.bcow.xyz/) (official)                                                                                                   | 🇨🇦 CA   |            |
 | [rimgo.pussthecat.org](https://rimgo.pussthecat.org/)                                                                                    | 🇩🇪 DE   |            |
 | [img.riverside.rocks](https://img.riverside.rocks) |     🇺🇸 US    |            |
 | [l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion](http://l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion/) |         |            |
