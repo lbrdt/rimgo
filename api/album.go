@@ -35,6 +35,8 @@ func FetchAlbum(albumID string) (types.Album, error) {
 			media = append(media, types.Media{
 				Id:          value.Get("id").String(),
 				Name:        value.Get("name").String(),
+				MimeType: 	 value.Get("mime_type").String(),
+				Type: 			 value.Get("type").String(),
 				Title:       value.Get("metadata.title").String(),
 				Description: value.Get("metadata.description").String(),
 				Url:         url,

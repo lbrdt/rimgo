@@ -48,8 +48,8 @@ func main() {
 	app.Get("/a/:albumID", pages.HandleAlbum)
 	app.Get("/t/:tagID", pages.HandleAlbum)
 	/*app.Get("/user/:userID", pages.HandleUser)
-	app.Get("/user/:userID/cover", pages.HandleUserCover)
-	app.Get("/gallery/:galleryID", pages.HandleGallery)*/
+	app.Get("/user/:userID/cover", pages.HandleUserCover)*/
+	app.Get("/gallery/:galleryID", pages.HandleGallery)
 
 	app.Listen(":" + viper.GetString("RIMGU_PORT"))
 }

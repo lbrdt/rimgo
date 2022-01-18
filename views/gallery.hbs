@@ -42,6 +42,8 @@
       </div>-->
     </div>
 
+    <br>
+
     {{#each album.Media}}
     {{#if this.Title}}
     <h3>{{this.Title}}</h3>
@@ -51,7 +53,14 @@
     {{/if}}
 
     <div class="center">
+      {{#equal this.Type "image"}}
       <img src="{{this.Url}}" loading="lazy">
+      {{/equal}}
+      {{#equal this.Type "video"}}
+      <video controls loop>
+        <source type="{{this.MimeType}}" src="{{this.Url}}" />
+      </video>
+      {{/equal}}
     </div>
 
     <br>
