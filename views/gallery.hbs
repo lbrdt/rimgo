@@ -47,9 +47,14 @@
     <h3>{{this.Title}}</h3>
     {{/if}}
     {{#if this.Description}}
-    <p>{{this.Description}}</p>
+    <p>{{this.Description}}</p><br>
     {{/if}}
-    <img src="{{this.Url}}" loading="lazy">
+
+    <div class="center">
+      <img src="{{this.Url}}" loading="lazy">
+    </div>
+
+    <br>
     {{/each}}
   </main>
 

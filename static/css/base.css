@@ -18,6 +18,11 @@ nav {
   align-items: center;
 }
 
+.center {
+  display: flex;
+  justify-content: center;
+}
+
 .logo {
   filter: invert(1) hue-rotate(180deg);
 }
