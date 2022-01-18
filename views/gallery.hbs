@@ -3,10 +3,11 @@
 
 <head>
   {{> partials/head }}
-  
+
   <link rel="stylesheet" href="/static/fonts/Material-Icons-Outlined.css" />
   <link rel="stylesheet" href="/static/css/album.css" />
-  
+  <link rel="stylesheet" href="/static/css/comments.css" />
+
 </head>
 
 <body>
@@ -65,6 +66,21 @@
 
     <br>
     {{/each}}
+
+    <div>
+      <hr>
+      <input id="comments__expandBtn" type="checkbox">
+      <label class="comments__expandBtn__label" for="comments__expandBtn">
+        <h3>Comments ({{album.Comments}})</h3>
+        <span class="comments__expandBtn__icon material-icons-outlined"></span>
+      </label>
+      <div class="comments">
+        {{#each comments}}
+        {{> partials/comment }}
+        {{/each}}
+      </div>
+    </div>
+    <hr>
   </main>
 
   {{> partials/footer }}

@@ -12,6 +12,7 @@ require (
 require (
 	github.com/andybalholm/brotli v1.0.2 // indirect
 	github.com/aymerick/raymond v2.0.2+incompatible // indirect
+	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/klauspost/compress v1.13.4 // indirect

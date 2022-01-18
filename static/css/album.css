@@ -11,6 +11,10 @@ img {
   max-width: 100%;
 }
 
+.pfp {
+  border-radius: 100%;
+}
+
 .imageMeta__wrapper,
 .imageMeta__item,
 .imageMeta {

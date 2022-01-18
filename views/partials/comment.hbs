@@ -1,0 +1,28 @@
+<div class="comment">
+  <div class="comment__user">
+    <img src="{{this.User.Avatar}}" class="pfp" width="24" height="24" loading="lazy">
+    <!--<a href="/user/{{this.User.Username}}">-->
+      <p><b>{{this.User.Username}}</b></p>
+    <!--</a>-->
+  </div>
+  <div>
+    {{{this.Comment}}}
+    <p title="{{this.Date}}">
+      {{this.RelTime}}
+      {{#if this.UpdatedAt}}
+      <span class="comment__updatedDate">(edited {{this.UpdatedAt}})</span>
+      {{/if}}
+      {{#if this.DeletedAt}}
+      <span class="comment__updatedDate">(deleted {{this.DeletedAt}})</span>
+      {{/if}}
+       | 
+      <span class="material-icons-outlined">thumb_up</span> {{this.Upvotes}}
+      <span class="material-icons-outlined">thumb_down</span> {{this.Downvotes}}
+    </p>
+  </div>
+  <div class="replies">
+    {{#each this.Comments}}
+    {{> partials/comment }}
+    {{/each}}
+  </div>
+</div>

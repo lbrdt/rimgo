@@ -1,13 +1,3 @@
-export const fetchComments = async (galleryID: string): Promise<Comment[]> => {
-  /* eslint-disable max-len */
-  // https://api.imgur.com/comment/v1/comments?client_id=${CLIENT_ID}%5Bpost%5D=eq%3Ag1bk7CB&include=account%2Cadconfig&per_page=30&sort=best
-  const response = await get(
-    `https://api.imgur.com/comment/v1/comments?client_id=${CONFIG.imgur_client_id}&filter%5Bpost%5D=eq%3A${galleryID}&include=account%2Cadconfig&per_page=30&sort=best`,
-  );
-  return JSON.parse(response.body).data;
-  /* eslint-enable max-len */
-}
-
 export const fetchUserInfo = async (userID: string): Promise<UserResult> => {
   // https://api.imgur.com/account/v1/accounts/hughjaniss?client_id=${CLIENT_ID}
   const response = await get(

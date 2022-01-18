@@ -20,8 +20,14 @@ func HandleGallery(c *fiber.Ctx) error {
 		return err
 	}
 
+	comments, err := api.FetchComments(c.Params("galleryID"))
+	if err != nil {
+		return err
+	}
+
 	return c.Render("gallery", fiber.Map{
-		"album": album,
-		"isAlbum": false,
+		"album":    album,
+		"comments": comments,
+		"isAlbum":  false,
 	})
 }
