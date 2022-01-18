@@ -15,9 +15,14 @@
   <main>
     <h1>{{album.Title}}</h1>
 
+    <p>{{album.CreatedAt}}</p>
+
     <div class="imageMeta__wrapper">
       <div class="imageMeta">
-        <p><span class="material-icons-outlined" title="Views">visibility</span> {{album.Views}}</p>
+        <div class="imageMeta__item">
+          <span class="material-icons-outlined" title="Views">visibility</span>
+          <p>{{album.Views}}</p>
+        </div>
         {{#unless isAlbum}}
         <p><span class="material-icons-outlined" title="Likes">thumb_up</span> {{album.Upvotes}}</p>
         <p><span class="material-icons-outlined" title="Dislilkes">thumb_down</span> {{album.Downvotes}}</p>
