@@ -41,8 +41,8 @@ Open an issue to have your instance listed here!
 | Website                                                                                                                                  | Country | Cloudflare |
 |------------------------------------------------------------------------------------------------------------------------------------------|---------|------------|
 | [i.bcow.xyz](https://i.bcow.xyz/)                                                                                                        | 🇨🇦 CA   |            |
-| [l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion](http://l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion/) |         |            |
 | [rimgo.pussthecat.org](https://rimgo.pussthecat.org/)                                                                                    | 🇩🇪 DE   |            |
+| [l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion](http://l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion/) |         |            |
 
 ## Install
 Librarian can run on any platform Go compiles on.
