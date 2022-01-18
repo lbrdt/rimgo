@@ -1,6 +1,3 @@
-
-
-
 export const handleUser = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
   // https://imgur.com/user/MomBotNumber5
   if (!CONFIG.use_api) {
@@ -36,20 +33,6 @@ export const handleTag = async (request: Hapi.Request, h: Hapi.ResponseToolkit) 
     posts: result.items,
     pageTitle: CONFIG.page_title,
     tag: result,
-    util,
-  });
-};
-
-export const handleGallery = async (request: Hapi.Request, h: Hapi.ResponseToolkit) => {
-  const galleryID = request.params.galleryID;
-  const gallery = await fetchGallery(galleryID);
-  const comments = CONFIG.use_api
-    ? await fetchComments(galleryID)
-    : null;
-  return h.view('gallery', {
-    ...gallery,
-    comments,
-    pageTitle: CONFIG.page_title,
     util,
   });
 };

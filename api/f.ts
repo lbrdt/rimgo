@@ -25,19 +25,3 @@ export const fetchTagPosts = async (tagID: string, sort: Sorting = 'viral'): Pro
   return JSON.parse(response.body).data;
   /* eslint-enable max-len */
 }
-
-export const fetchGallery = async (galleryID: string): Promise<Gallery> => {
-  // https://imgur.com/gallery/g1bk7CB
-  const response = await get(`https://imgur.com/gallery/${galleryID}`);
-  const $ = cheerio.load(response.body);
-  const postDataScript = $('head script:first-of-type').html();
-  if (!postDataScript) {
-    throw new Error('Could not find gallery data');
-  }
-  const postDataMatches = postDataScript.match(GALLERY_JSON_REGEX);
-  if (!postDataMatches || postDataMatches.length < 2) {
-    throw new Error('Could not parse gallery data');
-  }
-  const body = postDataMatches[1].replace(/\\'/g, "'");
-  return JSON.parse(JSON.parse(body));
-};
