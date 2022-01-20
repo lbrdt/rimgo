@@ -48,7 +48,7 @@ Open an issue to have your instance listed here!
 
 
 ## Install
-Librarian can run on any platform Go compiles on.
+rimgo can run on any platform Go compiles on.
 
 ### Docker
 Install Docker and docker-compose, then clone this repository.
