@@ -46,7 +46,7 @@ func main() {
 	app.Get("/", pages.FrontpageHandler)
 	app.Get("/:baseName.:extension", pages.HandleMedia)
 	app.Get("/a/:albumID", pages.HandleAlbum)
-	app.Get("/t/:tagID", pages.HandleAlbum)
+	//app.Get("/t/:tagID", pages.HandleAlbum)
 	/*app.Get("/user/:userID", pages.HandleUser)
 	app.Get("/user/:userID/cover", pages.HandleUserCover)*/
 	app.Get("/gallery/:galleryID", pages.HandleGallery)
