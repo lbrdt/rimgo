@@ -6,6 +6,7 @@ type Album struct {
 	Views     int64
 	Upvotes   int64
 	Downvotes int64
+	Privacy		string
 	CreatedAt string
 	UpdatedAt string
 	Comments	int64

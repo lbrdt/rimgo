@@ -26,10 +26,10 @@
           <span class="material-icons-outlined" title="Views">visibility</span>
           <p>{{album.Views}}</p>
         </div>
-        {{#unless isAlbum}}
+        {{#equal album.Privacy "public"}}
         <p><span class="material-icons-outlined" title="Likes">thumb_up</span> {{album.Upvotes}}</p>
         <p><span class="material-icons-outlined" title="Dislilkes">thumb_down</span> {{album.Downvotes}}</p>
-        {{/unless}}
+        {{/equal}}
       </div>
       <!--<div class="videoDesc__channel">
         <a href="{{claim.Channel.RelUrl}}">
@@ -69,6 +69,7 @@
     <br>
     {{/each}}
 
+    {{#equal album.Privacy "public"}}
     <div>
       <hr>
       <input id="comments__expandBtn" type="checkbox">
@@ -83,6 +84,7 @@
       </div>
     </div>
     <hr>
+    {{/equal}}
   </main>
 
   {{> partials/footer }}

@@ -2,6 +2,7 @@ package pages
 
 import (
 	"codeberg.org/video-prize-ranch/rimgo/api"
+	"codeberg.org/video-prize-ranch/rimgo/types"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -20,14 +21,16 @@ func HandleGallery(c *fiber.Ctx) error {
 		return err
 	}
 
-	comments, err := api.FetchComments(c.Params("galleryID"))
-	if err != nil {
-		return err
+	comments := []types.Comment{}
+	if album.Privacy != "private" {
+		comments, err = api.FetchComments(c.Params("galleryID"))
+		if err != nil {
+			return err
+		}
 	}
 
 	return c.Render("gallery", fiber.Map{
 		"album":    album,
 		"comments": comments,
-		"isAlbum":  false,
 	})
 }

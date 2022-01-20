@@ -26,6 +26,33 @@ func FetchAlbum(albumID string) (types.Album, error) {
 
 	data := gjson.Parse(string(body))
 
+	album := types.Album{}
+	if data.Get("privacy").String() == "private" {
+		album, err = ParseAlbum(data)
+	} else {
+		album, err = FetchPosts(albumID)
+	}
+	
+	return album, err
+}
+
+func FetchPosts(albumID string) (types.Album, error) {
+	res, err := http.Get("https://api.imgur.com/post/v1/posts/" + albumID + "?client_id=" + viper.GetString("RIMGU_IMGUR_CLIENT_ID") + "&include=media%2Caccount")
+	if err != nil {
+		return types.Album{}, err
+	}
+
+	body, err := io.ReadAll(res.Body)
+	if err != nil {
+		return types.Album{}, err
+	}
+
+	data := gjson.Parse(string(body))
+	
+	return ParseAlbum(data)
+}
+
+func ParseAlbum(data gjson.Result) (types.Album, error) {
 	media := make([]types.Media, 0)
 	data.Get("media").ForEach(
 		func(key gjson.Result, value gjson.Result) bool {
@@ -54,6 +81,7 @@ func FetchAlbum(albumID string) (types.Album, error) {
 	return types.Album{
 		Id:        data.Get("id").String(),
 		Title:     data.Get("title").String(),
+		Privacy:   data.Get("privacy").String(),
 		Views:     data.Get("view_count").Int(),
 		Upvotes:   data.Get("upvote_count").Int(),
 		Downvotes: data.Get("downvote_count").Int(),
