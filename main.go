@@ -43,6 +43,12 @@ func main() {
 		Root: http.FS(static.GetFiles()),
 	}))
 
+	app.Get("/robots.txt", func(c *fiber.Ctx) error {
+		file, _ := static.GetFiles().ReadFile("robots.txt")
+		_, err := c.Write(file)
+		return err
+	})
+
 	app.Get("/", pages.FrontpageHandler)
 	app.Get("/:baseName.:extension", pages.HandleMedia)
 	app.Get("/a/:galleryID", pages.HandleGallery)
