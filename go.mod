@@ -3,6 +3,7 @@ module codeberg.org/video-prize-ranch/rimgo
 go 1.17
 
 require (
+	github.com/dustin/go-humanize v1.0.0
 	github.com/gofiber/fiber/v2 v2.24.0
 	github.com/gofiber/template v1.6.21
 	github.com/spf13/viper v1.10.1
@@ -12,7 +13,6 @@ require (
 require (
 	github.com/andybalholm/brotli v1.0.2 // indirect
 	github.com/aymerick/raymond v2.0.2+incompatible // indirect
-	github.com/dustin/go-humanize v1.0.0 // indirect
 	github.com/fsnotify/fsnotify v1.5.1 // indirect
 	github.com/hashicorp/hcl v1.0.0 // indirect
 	github.com/klauspost/compress v1.13.4 // indirect
