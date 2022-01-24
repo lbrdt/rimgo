@@ -44,6 +44,7 @@ Open an issue to have your instance listed here!
 | [rimgo.pussthecat.org](https://rimgo.pussthecat.org/)                                                                                    | 🇩🇪 DE   |            |
 | [img.riverside.rocks](https://img.riverside.rocks) |     🇺🇸 US    |            |
 | [rimgo.totaldarkness.net](https://rimgo.totaldarkness.net/) | 🇨🇦 CA | |
+| [rimgo.bus-hit.me](https://rimgo.bus-hit.me/) | 🇨🇦 CA | |
 | [l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion](http://l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion/) |         |            |
 | [jx3dpcwedpzu2mh54obk5gvl64i2ln7pt5mrzd75s4jnndkqwzaim7ad.onion](http://jx3dpcwedpzu2mh54obk5gvl64i2ln7pt5mrzd75s4jnndkqwzaim7ad.onion) |     🇺🇸 US    |            |
 
