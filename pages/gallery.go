@@ -22,7 +22,6 @@ func HandleGallery(c *fiber.Ctx) error {
 	}
 
 	comments := []types.Comment{}
-	println(album.SharedWithCommunity)
 	if album.SharedWithCommunity {
 		comments, err = api.FetchComments(c.Params("galleryID"))
 		if err != nil {
