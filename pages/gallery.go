@@ -22,7 +22,8 @@ func HandleGallery(c *fiber.Ctx) error {
 	}
 
 	comments := []types.Comment{}
-	if album.Privacy != "private" {
+	println(album.SharedWithCommunity)
+	if album.SharedWithCommunity {
 		comments, err = api.FetchComments(c.Params("galleryID"))
 		if err != nil {
 			return err

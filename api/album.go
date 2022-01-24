@@ -32,7 +32,7 @@ func FetchAlbum(albumID string) (types.Album, error) {
 	} else {
 		album, err = FetchPosts(albumID)
 	}
-	
+
 	return album, err
 }
 
@@ -48,7 +48,7 @@ func FetchPosts(albumID string) (types.Album, error) {
 	}
 
 	data := gjson.Parse(string(body))
-	
+
 	return ParseAlbum(data)
 }
 
@@ -79,14 +79,14 @@ func ParseAlbum(data gjson.Result) (types.Album, error) {
 	}
 
 	return types.Album{
-		Id:        data.Get("id").String(),
-		Title:     data.Get("title").String(),
-		Privacy:   data.Get("privacy").String(),
-		Views:     data.Get("view_count").Int(),
-		Upvotes:   data.Get("upvote_count").Int(),
-		Downvotes: data.Get("downvote_count").Int(),
-		Comments:  data.Get("comment_count").Int(),
-		CreatedAt: createdAt,
-		Media:     media,
+		Id:                  data.Get("id").String(),
+		Title:               data.Get("title").String(),
+		SharedWithCommunity: data.Get("shared_with_community").Bool(),
+		Views:               data.Get("view_count").Int(),
+		Upvotes:             data.Get("upvote_count").Int(),
+		Downvotes:           data.Get("downvote_count").Int(),
+		Comments:            data.Get("comment_count").Int(),
+		CreatedAt:           createdAt,
+		Media:               media,
 	}, nil
 }
