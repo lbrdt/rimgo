@@ -26,10 +26,10 @@
           <span class="material-icons-outlined" title="Views">visibility</span>
           <p>{{album.Views}}</p>
         </div>
-        {{#equal album.Privacy "public"}}
+        {{#if album.SharedWithCommunity}}
         <p><span class="material-icons-outlined" title="Likes">thumb_up</span> {{album.Upvotes}}</p>
         <p><span class="material-icons-outlined" title="Dislilkes">thumb_down</span> {{album.Downvotes}}</p>
-        {{/equal}}
+        {{/if}}
       </div>
       <!--<div class="videoDesc__channel">
         <a href="{{claim.Channel.RelUrl}}">

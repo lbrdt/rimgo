@@ -27,10 +27,10 @@ func FetchAlbum(albumID string) (types.Album, error) {
 	data := gjson.Parse(string(body))
 
 	album := types.Album{}
-	if data.Get("privacy").String() == "private" {
-		album, err = ParseAlbum(data)
-	} else {
+	if data.Get("shared_with_community").Bool() {
 		album, err = FetchPosts(albumID)
+	} else {
+		album, err = ParseAlbum(data)
 	}
 
 	return album, err
