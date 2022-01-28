@@ -42,7 +42,7 @@ func init() {
 		Views:             engine,
 		Prefork:           viper.GetBool("FIBER_PREFORK"),
 		UnescapePath:      true,
-		StreamRequestBody: true,
+		StreamRequestBody: false,
 	})
 
 	app.Use("/static", filesystem.New(filesystem.Config{

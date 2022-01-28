@@ -1,9 +1,9 @@
 package pages
 
 import (
+	"io/ioutil"
 	"net/http"
-	"strconv"
-
+	
 	"codeberg.org/video-prize-ranch/rimgo/utils"
 	"github.com/gofiber/fiber/v2"
 )
@@ -32,7 +32,11 @@ func handleMedia(c *fiber.Ctx, url string) error {
 		return err
 	}
 
+	body, err := ioutil.ReadAll(res.Body)
+	if err != nil {
+		return err
+	}
+
 	c.Set("Content-Type", res.Header.Get("Content-Type"));
-	contentLen, _ := strconv.Atoi(res.Header.Get("Content-Length"))
-	return c.SendStream(res.Body, contentLen)
+	return c.Send(body)
 }
