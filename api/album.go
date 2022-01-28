@@ -59,6 +59,10 @@ func ParseAlbum(data gjson.Result) (types.Album, error) {
 			url := value.Get("url").String()
 			url = strings.ReplaceAll(url, "https://i.imgur.com", "")
 
+			if strings.HasSuffix(url, "mp4") || viper.GetBool("CF_ALL_MEDIA") {
+				url = viper.GetString("CF_MEDIA_DISTRIBUTION") + url
+			}
+
 			media = append(media, types.Media{
 				Id:          value.Get("id").String(),
 				Name:        value.Get("name").String(),

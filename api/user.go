@@ -33,6 +33,10 @@ func FetchUser(username string) (types.User, error) {
 	user.Cover = strings.ReplaceAll(user.Cover, "https://imgur.com", "")
 	user.Avatar = strings.ReplaceAll(user.Avatar, "https://i.imgur.com", "")
 
+	if viper.GetBool("CF_ALL_MEDIA") {
+		user.Avatar = viper.GetString("CF_MEDIA_DISTRIBUTION") + user.Avatar
+	}
+
 	createdTime, _ := time.Parse("2006-01-02T15:04:05Z", user.CreatedAt)
 	user.CreatedAt = createdTime.Format("January 2, 2006")
 
@@ -64,6 +68,11 @@ func FetchSubmissions(username string, sort string, page string) ([]types.Submis
 
 				cover := value.Get("images.#(id==\"" + value.Get("cover").String() + "\")")
 
+				url := strings.ReplaceAll(cover.Get("link").String(), "https://i.imgur.com", "")
+				if strings.HasSuffix(url, "mp4") || viper.GetBool("CF_ALL_MEDIA") {
+					url = viper.GetString("CF_MEDIA_DISTRIBUTION") + url
+				}
+
 				submissions = append(submissions, types.Submission{
 					Id:    value.Get("id").String(),
 					Link:  strings.ReplaceAll(value.Get("link").String(), "https://imgur.com", ""),
@@ -72,7 +81,7 @@ func FetchSubmissions(username string, sort string, page string) ([]types.Submis
 						Id:          cover.Get("id").String(),
 						Description: cover.Get("description").String(),
 						Type:        strings.Split(cover.Get("type").String(), "/")[0],
-						Url:         strings.ReplaceAll(cover.Get("link").String(), "https://i.imgur.com", ""),
+						Url:         url,
 					},
 					Points:    cover.Get("points").Int(),
 					Upvotes:   cover.Get("ups").Int(),
