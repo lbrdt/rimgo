@@ -1,14 +1,14 @@
 <div class="comment">
   <div class="comment__user">
     <img src="{{this.User.Avatar}}" class="pfp" width="24" height="24" loading="lazy">
-    <!--<a href="/user/{{this.User.Username}}">-->
+    <a href="/user/{{this.User.Username}}">
       <p class="comment__user__username"><b>{{this.User.Username}}</b></p>
-    <!--</a>-->
+    </a>
   </div>
   <div>
     {{{this.Comment}}}
-    <p title="{{this.CreatedAt}}">
-      {{this.RelTime}}
+    <p>
+      <span title="{{this.CreatedAt}}">{{this.RelTime}}</span>
       {{#if this.DeletedAt}}
       <span class="comment__updatedDate">(deleted {{this.DeletedAt}})</span>
       {{/if}}

@@ -75,7 +75,7 @@ func ParseComment(data gjson.Result) types.Comment {
 	return types.Comment{
 		Comments: comments,
 		User: types.User{
-			Id:       data.Get("account.id").String(),
+			Id:       data.Get("account.id").Int(),
 			Username: data.Get("account.username").String(),
 			Avatar:   userAvatar,
 		},

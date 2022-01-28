@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>{{user.Username}} - rimgo</title>
+
+  {{> partials/head }}
+
+  <link rel="stylesheet" href="/static/fonts/Material-Icons-Outlined.css" />
+  <link rel="stylesheet" href="/static/css/user.css" />
+
+</head>
+
+<body>
+  {{> partials/header }}
+
+  <main>
+    <div class="userMeta" style="background-image: url('{{user.Cover}}');">
+      <div class="userMeta__upper">
+        <img class="pfp" src="{{user.Avatar}}" width="72" height="72">
+        <div>
+          <h2>{{user.Username}}</h2>
+          <p>{{user.Points}} pts · {{user.CreatedAt}}</p>
+        </div>
+      </div>
+      <p class="userMeta__upper__bio">{{user.Bio}}</p>
+    </div>
+
+    <div class="posts">
+      {{#each submissions}}
+      {{> partials/post }}
+      {{/each}}
+    </div>
+  </main>
+
+  {{> partials/footer }}
+</body>
+
+</html>

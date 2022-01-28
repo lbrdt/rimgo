@@ -1,7 +1,7 @@
 package main
 
 import (
-	"log"
+	"fmt"
 	"net/http"
 
 	"codeberg.org/video-prize-ranch/rimgo/pages"
@@ -28,7 +28,7 @@ func main() {
 
 	err := viper.ReadInConfig()
 	if err != nil {
-		log.Fatal(err)
+		fmt.Println(err)
 	}
 
 	engine := handlebars.NewFileSystem(http.FS(views.GetFiles()), ".hbs")
@@ -53,8 +53,9 @@ func main() {
 	app.Get("/:baseName.:extension", pages.HandleMedia)
 	app.Get("/a/:galleryID", pages.HandleGallery)
 	//app.Get("/t/:tagID", pages.HandleAlbum)
-	/*app.Get("/user/:userID", pages.HandleUser)
-	app.Get("/user/:userID/cover", pages.HandleUserCover)*/
+	app.Get("/user/:userID", pages.HandleUser)
+	app.Get("/user/:userID/cover", pages.HandleUserCover)
+	app.Get("/user/:userID/avatar", pages.HandleUserAvatar)
 	app.Get("/gallery/:galleryID", pages.HandleGallery)
 
 	app.Listen(":" + viper.GetString("RIMGU_PORT"))
