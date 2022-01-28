@@ -1,19 +1,25 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"net/http"
 
 	"codeberg.org/video-prize-ranch/rimgo/pages"
 	"codeberg.org/video-prize-ranch/rimgo/static"
 	"codeberg.org/video-prize-ranch/rimgo/views"
+	"github.com/aws/aws-lambda-go/events"
+	"github.com/aws/aws-lambda-go/lambda"
+	fiberadaptor "github.com/awslabs/aws-lambda-go-api-proxy/fiber"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/filesystem"
 	"github.com/gofiber/template/handlebars"
 	"github.com/spf13/viper"
 )
 
-func main() {
+var fiberLambda *fiberadaptor.FiberLambda
+
+func init() {
 	viper.SetConfigName("config")
 	viper.SetConfigType("yml")
 	viper.AddConfigPath("/etc/rimgu/")
@@ -58,5 +64,13 @@ func main() {
 	app.Get("/user/:userID/avatar", pages.HandleUserAvatar)
 	app.Get("/gallery/:galleryID", pages.HandleGallery)
 
-	app.Listen(":" + viper.GetString("RIMGU_PORT"))
+	fiberLambda = fiberadaptor.New(app)
+}
+
+func Handler(ctx context.Context, req events.APIGatewayProxyRequest) (events.APIGatewayProxyResponse, error) {
+	return fiberLambda.ProxyWithContext(ctx, req)
+}
+
+func main() {
+	lambda.Start(Handler)
 }

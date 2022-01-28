@@ -1,16 +1,14 @@
-FROM golang:alpine AS build
-
-WORKDIR /src
-RUN apk --no-cache add git
-RUN git clone https://codeberg.org/video-prize-ranch/rimgo .
-
-RUN go build
-
-FROM alpine:latest as bin
-
-WORKDIR /app
-COPY --from=build /src/rimgo .
-
-EXPOSE 3000
-
-CMD ["/app/rimgo"]
+FROM alpine as build
+# install build tools
+RUN apk add go git
+RUN go env -w GOPROXY=direct
+# cache dependencies
+ADD go.mod go.sum ./
+RUN go mod download 
+# build
+ADD . .
+RUN go build -o /main
+# copy artifacts to a clean image
+FROM alpine
+COPY --from=build /main /main
+ENTRYPOINT [ "/main" ]     
