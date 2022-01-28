@@ -12,7 +12,7 @@ import (
 func HandleUser(c *fiber.Ctx) error {
 	utils.SetHeaders(c)
 	c.Set("Cache-Control", "public,max-age=604800")
-	c.Set("Content-Security-Policy", "default-src 'none'; media-src 'self'; style-src 'unsafe-inline' 'self'; img-src 'self'; font-src 'self'; block-all-mixed-content")
+	c.Set("Content-Security-Policy", "default-src 'none'; style-src 'self' 'unsafe-inline'; media-src 'self' *.cloudfront.net; img-src 'self' *.cloudfront.net; font-src 'self'; block-all-mixed-content")
 
 	wg := sync.WaitGroup{}
 	wg.Add(2)

@@ -9,7 +9,7 @@ import (
 
 func HandleGallery(c *fiber.Ctx) error {
 	utils.SetHeaders(c)
-	c.Set("Content-Security-Policy", "default-src 'none'; media-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; block-all-mixed-content")
+	c.Set("Content-Security-Policy", "default-src 'none'; style-src 'self'; media-src 'self' *.cloudfront.net; img-src 'self' *.cloudfront.net; font-src 'self'; block-all-mixed-content")
 
 	album, err := api.FetchAlbum(c.Params("galleryID"))
 	if err != nil {

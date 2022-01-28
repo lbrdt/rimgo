@@ -55,6 +55,9 @@ func ParseComment(data gjson.Result) types.Comment {
 	deletedAt, _ := utils.FormatDate(data.Get("deleted_at").String())
 
 	userAvatar := strings.ReplaceAll(data.Get("account.avatar").String(), "https://i.imgur.com", "")
+	if viper.GetBool("CF_ALL_MEDIA") {
+		userAvatar = viper.GetString("CF_MEDIA_DISTRIBUTION") + userAvatar
+	}
 
 	wg := sync.WaitGroup{}
 	comments := make([]types.Comment, 0)
@@ -85,7 +88,7 @@ func ParseComment(data gjson.Result) types.Comment {
 		Downvotes: data.Get("downvote_count").Int(),
 		Platform:  data.Get("platform").String(),
 		CreatedAt: createdAt,
-		RelTime: 	 humanize.Time(createdTime),
+		RelTime:   humanize.Time(createdTime),
 		UpdatedAt: updatedAt,
 		DeletedAt: deletedAt,
 	}
