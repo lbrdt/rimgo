@@ -12,7 +12,6 @@ import (
 	"github.com/aws/aws-lambda-go/lambda"
 	fiberadaptor "github.com/awslabs/aws-lambda-go-api-proxy/fiber"
 	"github.com/gofiber/fiber/v2"
-	"github.com/gofiber/fiber/v2/middleware/filesystem"
 	"github.com/gofiber/template/handlebars"
 	"github.com/spf13/viper"
 )
@@ -44,10 +43,6 @@ func init() {
 		UnescapePath:      true,
 		StreamRequestBody: false,
 	})
-
-	app.Use("/static", filesystem.New(filesystem.Config{
-		Root: http.FS(static.GetFiles()),
-	}))
 
 	app.Get("/robots.txt", func(c *fiber.Ctx) error {
 		file, _ := static.GetFiles().ReadFile("robots.txt")
