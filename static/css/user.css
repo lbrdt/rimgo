@@ -8,7 +8,7 @@ h2, p {
 
 .userMeta {
   padding: 2vw;
-  border-radius: 8px;
+  border-radius: 12px;
 }
 
 .userMeta__upper {
@@ -34,8 +34,8 @@ h2, p {
 }
 
 .post {
-  border-radius: 8px;
-  background-color: #2c2c2c;
+  border-radius: 12px;
+  background-color: #3b3b3b;
   font-weight: 400;
 }
 
