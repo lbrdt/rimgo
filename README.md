@@ -40,7 +40,8 @@ Open an issue to have your instance listed here!
 
 | Website                                                                                                                                  | Country | Cloudflare |
 |------------------------------------------------------------------------------------------------------------------------------------------|---------|------------|
-| [i.bcow.xyz](https://i.bcow.xyz/) (official)                                                                                                   | 🇨🇦 CA   |            |
+| [i.bcow.xyz](https://i.bcow.xyz/) (official) | 🇨🇦 CA   |            |
+| [rimgo.bcow.xyz](https://rimgo.bcow.xyz/) (official) | 🌐 Global   | |
 | [rimgo.pussthecat.org](https://rimgo.pussthecat.org/)                                                                                    | 🇩🇪 DE   |            |
 | [img.riverside.rocks](https://img.riverside.rocks) |     🇺🇸 US    |            |
 | [rimgo.totaldarkness.net](https://rimgo.totaldarkness.net/) | 🇨🇦 CA | |
@@ -48,6 +49,7 @@ Open an issue to have your instance listed here!
 | [l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion](http://l4d4owboqr6xcmd6lf64gbegel62kbudu3x3jnldz2mx6mhn3bsv3zyd.onion/) |         |            |
 | [jx3dpcwedpzu2mh54obk5gvl64i2ln7pt5mrzd75s4jnndkqwzaim7ad.onion](http://jx3dpcwedpzu2mh54obk5gvl64i2ln7pt5mrzd75s4jnndkqwzaim7ad.onion) |     🇺🇸 US    |            |
 
+> rimgo.bcow.xyz is running on AWS Lambda@Edge for a global serverless deployment, there may be issues and CloudFront collects some anonymous usage statistics.
 
 ## Install
 rimgo can run on any platform Go compiles on.
