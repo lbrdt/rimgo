@@ -10,5 +10,6 @@ type Album struct {
 	CreatedAt           string
 	UpdatedAt           string
 	Comments            int64
+	User								User
 	Media               []Media
 }

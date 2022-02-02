@@ -78,7 +78,7 @@ func ParseAlbum(data gjson.Result) (types.Album, error) {
 		return types.Album{}, err
 	}
 
-	return types.Album{
+	album := types.Album{
 		Id:                  data.Get("id").String(),
 		Title:               data.Get("title").String(),
 		SharedWithCommunity: data.Get("shared_with_community").Bool(),
@@ -88,5 +88,16 @@ func ParseAlbum(data gjson.Result) (types.Album, error) {
 		Comments:            data.Get("comment_count").Int(),
 		CreatedAt:           createdAt,
 		Media:               media,
-	}, nil
+	}
+
+	account := data.Get("account")
+	if account.Raw != "" {
+		album.User = types.User{
+			Id: account.Get("id").Int(),
+			Username: account.Get("username").String(),
+			Avatar: strings.ReplaceAll(account.Get("avatar_url").String(), "https://i.imgur.com", ""),
+		}
+	}
+
+	return album, nil
 }
