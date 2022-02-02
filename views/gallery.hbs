@@ -2,7 +2,12 @@
 <html lang="en">
 
 <head>
-  <title>{{album.Title}} - rimgo</title>
+  <title>
+    {{#if album.Title}}
+    {{album.Title}} - 
+    {{/if}}
+    rimgo
+    </title>
 
   {{> partials/head }}
 
