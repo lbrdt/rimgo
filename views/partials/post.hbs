@@ -1,7 +1,7 @@
 <a href="{{Link}}">
   <div class="post">
     {{#equal Cover.Type "video"}}
-    <video fullscreen controls loop poster="/{{Cover.Id}}.webp" preload="none" width="100%" height="100%">
+    <video controls loop poster="/{{Cover.Id}}.webp" preload="none" width="100%" height="100%">
       <source src="{{Cover.Url}}" type="video/mp4" />
     </video>
     {{/equal}}

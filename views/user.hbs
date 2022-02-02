@@ -31,6 +31,14 @@
       {{> partials/post }}
       {{/each}}
     </div>
+
+    <div class="pageSelector">
+      {{#equal page "0" }}
+      {{else}}
+      <a href="{{channel.RelUrl}}?page={{prevPage}}">Previous page</a>
+      {{/equal}}
+      <a href="{{channel.RelUrl}}?page={{nextPage}}">Next page</a>
+    </div>
   </main>
 
   {{> partials/footer }}

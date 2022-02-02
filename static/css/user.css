@@ -61,3 +61,9 @@ video:not(:fullscreen) {
 .post__meta .material-icons-outlined {
   font-size: 1rem;
 }
+
+.pageSelector {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 1em;
+}
