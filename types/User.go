@@ -1,13 +1,13 @@
 package types
 
 type User struct {
-	Id        int64  `json:"id"`
-	Bio       string `json:"bio"`
-	Username  string `json:"username"`
-	Points    int64  `json:"reputation_count"`
-	Cover     string `json:"cover_url"`
-	Avatar    string `json:"avatar_url"`
-	CreatedAt string `json:"created_at"`
+	Id        int64
+	Bio       string
+	Username  string
+	Points    int64
+	Cover     string
+	Avatar    string
+	CreatedAt string
 }
 
 type Submission struct {

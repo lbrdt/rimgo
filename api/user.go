@@ -1,7 +1,6 @@
 package api
 
 import (
-	"encoding/json"
 	"io"
 	"net/http"
 	"strings"
@@ -24,19 +23,19 @@ func FetchUser(username string) (types.User, error) {
 		return types.User{}, err
 	}
 
-	var user types.User
-	err = json.Unmarshal(body, &user)
-	if err != nil {
-		return types.User{}, err
-	}
+	data := gjson.Parse(string(body))
 
-	user.Cover = strings.ReplaceAll(user.Cover, "https://imgur.com", "")
-	user.Avatar = strings.ReplaceAll(user.Avatar, "https://i.imgur.com", "")
+	createdTime, _ := time.Parse(time.RFC3339, data.Get("created_at").String())
 
-	createdTime, _ := time.Parse("2006-01-02T15:04:05Z", user.CreatedAt)
-	user.CreatedAt = createdTime.Format("January 2, 2006")
-
-	return user, nil
+	return types.User{
+		Id:        data.Get("id").Int(),
+		Bio:       data.Get("bio").String(),
+		Username:  data.Get("username").String(),
+		Points:    data.Get("reputation_count").Int(),
+		Cover:     strings.ReplaceAll(data.Get("cover_url").String(), "https://imgur.com", ""),
+		Avatar:    strings.ReplaceAll(data.Get("avatar_url").String(), "https://i.imgur.com", ""),
+		CreatedAt: createdTime.Format("January 2, 2006"),
+	}, nil
 }
 
 func FetchSubmissions(username string, sort string, page string) ([]types.Submission, error) {
